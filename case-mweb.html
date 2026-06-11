@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mweb & Webafrica — Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black:      #111111;
+      --white:      #FFFFFF;
+      --page:       #F2F2F2;
+      --muted:      #777777;
+      --border:     #E2E2E2;
+      --dark:       #222222;
+      --mweb-teal:  #007B8A;
+      --mweb-light: #E0F4F6;
+      --weba-pink:  #FF4FA3;
+      --weba-light: #FFF0F8;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--white); color: var(--black); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 0.88rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--mweb-teal); }
+
+    /* HERO - split teal left, pink right */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+    .hero-left { background: var(--mweb-teal); padding: 5rem 3rem 5rem 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-right { background: var(--weba-pink); padding: 5rem 2.5rem 5rem 3rem; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-brand-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.6rem; }
+    .hero-brand-name { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; color: var(--white); line-height: 1; margin-bottom: 0.5rem; }
+    .hero-brand-role { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* OVERVIEW STRIP */
+    .overview { background: var(--black); padding: 3.5rem 2.5rem; }
+    .overview-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; align-items: start; }
+    .overview-intro { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.85; font-weight: 300; }
+    .overview-intro em { font-style: italic; color: var(--white); }
+    .overview-meta-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.3rem; }
+    .overview-meta-value { font-size: 0.88rem; color: var(--white); }
+
+    /* STATS */
+    .stats-strip { background: var(--page); padding: 0; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+    .stat-cell { background: var(--white); padding: 2rem; text-align: center; }
+    .stat-num { font-family: var(--serif); font-size: 2.25rem; font-weight: 400; color: var(--mweb-teal); line-height: 1; margin-bottom: 0.35rem; }
+    .stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .section-divider { height: 1px; background: var(--border); }
+    .bg-white { background: var(--white); }
+    .bg-page { background: var(--page); }
+    .bg-teal { background: var(--mweb-teal); }
+    .bg-teal-light { background: var(--mweb-light); }
+    .bg-pink-light { background: var(--weba-light); }
+
+    .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--mweb-teal); }
+    .section-label.pink::before { background: var(--weba-pink); }
+    .section-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; color: var(--black); line-height: 1.3; margin-bottom: 1.25rem; }
+    .section-title em { font-style: italic; color: var(--mweb-teal); }
+    .section-title em.pink { color: var(--weba-pink); }
+    .section-body { font-size: 0.9rem; color: var(--muted); line-height: 1.9; max-width: 680px; }
+    .section-body p + p { margin-top: 1rem; }
+
+    /* WORK GRID */
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2.5rem; }
+    .work-cell { background: var(--white); padding: 2rem; }
+    .work-cell-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mweb-teal); margin-bottom: 0.75rem; }
+    .work-cell-label.pink { color: var(--weba-pink); }
+    .work-cell-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--black); margin-bottom: 0.6rem; line-height: 1.4; }
+    .work-cell-body { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
+
+    /* ACHIEVEMENT BLOCK */
+    .achievement { border-left: 3px solid var(--mweb-teal); background: var(--mweb-light); padding: 2rem; margin-top: 2.5rem; }
+    .achievement.pink { border-left-color: var(--weba-pink); background: var(--weba-light); }
+    .achievement-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mweb-teal); margin-bottom: 0.6rem; font-weight: 600; }
+    .achievement-label.pink { color: var(--weba-pink); }
+    .achievement-text { font-size: 0.9rem; color: var(--dark); line-height: 1.85; }
+
+    /* MERGER STRIP */
+    .merger { background: #1C2B3A; padding: 4rem 2.5rem; }
+    .merger-inner { max-width: 900px; margin: 0 auto; }
+    .merger-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+    .merger-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; }
+    .merger-eyebrow.teal { color: var(--mweb-teal); }
+    .merger-eyebrow.teal::before { background: var(--mweb-teal); }
+    .merger-title { font-family: var(--serif); font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; }
+    .merger-title em { font-style: italic; color: var(--mweb-teal); }
+    .merger-body { font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.9; max-width: 680px; }
+    .merger-body p + p { margin-top: 1rem; }
+    .merger-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); margin-top: 3rem; }
+    .merger-cell { padding: 2rem; }
+    .merger-cell.teal-bg { background: var(--mweb-light); border-top: 2px solid var(--mweb-teal); }
+    .merger-cell.pink-bg { background: var(--weba-light); border-top: 2px solid var(--weba-pink); }
+    .merger-cell-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .merger-cell-title { font-family: var(--serif); font-size: 1rem; color: var(--black); margin-bottom: 0.5rem; }
+    .merger-cell-body { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
+
+    /* RESULTS */
+    .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-top: 2.5rem; }
+    .result-cell { background: var(--white); padding: 1.75rem; text-align: center; }
+    .result-num { font-family: var(--serif); font-size: 2rem; color: var(--mweb-teal); margin-bottom: 0.4rem; }
+    .result-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+    /* BACK */
+    .back-strip { background: var(--page); border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .back-strip-text { font-family: var(--serif); font-size: 1rem; color: var(--black); }
+    .back-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--mweb-teal); }
+
+    footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-size: 0.7rem; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left, .hero-right { padding: 3rem 1.25rem; }
+      .overview-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .stats-inner, .work-grid, .merger-grid, .results-grid { grid-template-columns: 1fr; }
+      nav, .back-strip, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .merger { padding: 3rem 1.25rem; }
+      .back-strip { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Greer Abrahams</a>
+  <a href="index.html#work" class="nav-back">Back to portfolio</a>
+</nav>
+
+
+<!-- HERO - SPLIT -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-brand-label">2022 to 2025</p>
+    <h1 class="hero-brand-name">Mweb</h1>
+    <p class="hero-brand-role">Brand Manager, Social Media<br>Then Group Online Reputation Manager</p>
+  </div>
+  <div class="hero-right">
+    <p class="hero-brand-label">Post-merger, 2024</p>
+    <h1 class="hero-brand-name">Webafrica</h1>
+    <p class="hero-brand-role">Group Online Reputation Manager<br>Two brands. One team. One strategy.</p>
+  </div>
+</div>
+
+
+<!-- OVERVIEW -->
+<div class="overview">
+  <div class="overview-inner">
+    <p class="overview-intro">Three years. Two brands. One merger. A promotion in the middle of it all. This is the story of managing social media and online reputation for two of South Africa's leading internet service providers, <em>simultaneously, in the same category.</em></p>
+    <div>
+      <p class="overview-meta-label">Period</p>
+      <p class="overview-meta-value">2022 to 2025</p>
+    </div>
+    <div>
+      <p class="overview-meta-label">Team size</p>
+      <p class="overview-meta-value">Up to 12</p>
+    </div>
+    <div>
+      <p class="overview-meta-label">Reported to</p>
+      <p class="overview-meta-value">Head of Marketing</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SNAPSHOT -->
+<div style="background:var(--page); padding:2.5rem;">
+  <div style="max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border);">
+    <div style="background:var(--white); padding:1.5rem; text-align:center;">
+      <p style="font-family:var(--serif); font-size:1.75rem; color:var(--mweb-teal); margin-bottom:0.3rem;">3</p>
+      <p style="font-size:0.72rem; color:var(--muted); line-height:1.5;">Years of progressive growth</p>
+    </div>
+    <div style="background:var(--white); padding:1.5rem; text-align:center;">
+      <p style="font-family:var(--serif); font-size:1.75rem; color:var(--mweb-teal); margin-bottom:0.3rem;">2</p>
+      <p style="font-size:0.72rem; color:var(--muted); line-height:1.5;">Full system migrations led end to end</p>
+    </div>
+    <div style="background:var(--white); padding:1.5rem; text-align:center;">
+      <p style="font-family:var(--serif); font-size:1.75rem; color:var(--mweb-teal); margin-bottom:0.3rem;">12</p>
+      <p style="font-size:0.72rem; color:var(--muted); line-height:1.5;">Team members managed at peak</p>
+    </div>
+    <div style="background:var(--white); padding:1.5rem; text-align:center;">
+      <p style="font-family:var(--serif); font-size:1.75rem; color:var(--mweb-teal); margin-bottom:0.3rem;">1</p>
+      <p style="font-size:0.72rem; color:var(--muted); line-height:1.5;">Promotion during a live merger</p>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-cell">
+      <p class="stat-num">3</p>
+      <p class="stat-label">Years at the group, 2022 to 2025</p>
+    </div>
+    <div class="stat-cell">
+      <p class="stat-num">2</p>
+      <p class="stat-label">Roles, Brand Manager to Group Reputation Manager</p>
+    </div>
+    <div class="stat-cell">
+      <p class="stat-num">12</p>
+      <p class="stat-label">Team members across two brand teams at peak</p>
+    </div>
+    <div class="stat-cell">
+      <p class="stat-num">2</p>
+      <p class="stat-label">Full system migrations led from end to end</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- MWEB SECTION -->
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">Mweb, 2022 to 2024</p>
+    <h2 class="section-title">Brand Manager, Social Media.<br><em>Building the foundation.</em></h2>
+    <div class="section-body">
+      <p>As Brand Manager for Social Media at Mweb, I led a team of two social media managers and an external team of customer service agents across sales, customer service and technical support. I owned the full social media landscape, from community management through to content briefing and creation, working with both internal teams and external agencies.</p>
+      <p>As part of the senior marketing team, reporting directly to the Head of Marketing, I collaborated across disciplines on integrated marketing, advertising and PR campaigns. My specific responsibility was to strategise and deploy the social media component of every campaign.</p>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-cell">
+        <p class="work-cell-label">Community Management</p>
+        <h3 class="work-cell-title">Two levels, one consistent voice</h3>
+        <p class="work-cell-body">My social media managers handled brand community management directly, while also liaising with customer support escalation teams when issues required inter-departmental resolution. Constant cross-functional collaboration, keeping the brand voice consistent while ensuring customer issues moved through the right channels quickly and efficiently.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Content and Campaigns</p>
+        <h3 class="work-cell-title">Strategy through to deployment</h3>
+        <p class="work-cell-body">Responsible for briefing and overseeing content creation with internal and external agencies, and for strategising and deploying social media across integrated marketing campaigns. Social was not treated as an afterthought. It was built into the campaign architecture from the start.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Sentiment and Reporting</p>
+        <h3 class="work-cell-title">Social as business intelligence</h3>
+        <p class="work-cell-body">Tracked and measured brand sentiment and client satisfaction on an ongoing basis, translating findings into structured reports shared across the business, including operations, sales, marketing and the customer experience team. Social media fed directly into broader business decision making.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Senior Marketing Team</p>
+        <h3 class="work-cell-title">Cross-functional collaboration</h3>
+        <p class="work-cell-body">Worked alongside other brand managers as part of the senior marketing team on integrated campaigns, PR and advertising. Brought the social and community perspective into broader marketing strategy, ensuring consistency across every channel and customer touchpoint.</p>
+      </div>
+    </div>
+
+    <div class="achievement">
+      <p class="achievement-label">Key Achievement</p>
+      <p class="achievement-text">Led the migration of the entire team from Hootsuite to Qualtrics Social Connect. This was not just a tool switch. I configured all system triggers and workflows, established the brand voice framework and response scripts, and trained all social media agents from scratch. Performance was measured against strict deliverables from day one, with customer happiness as the primary metric.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- MERGER -->
+<div class="merger">
+  <div class="merger-inner">
+    <p class="merger-eyebrow teal">The Merger, 2024</p>
+    <h2 class="merger-title">Then the merger happened.<br><em>And everything got bigger.</em></h2>
+    <div class="merger-body">
+      <p>When Mweb and Webafrica merged, I was promoted to Group Online Reputation Manager. Think Unilever managing Pantene and Organics in the same category. Two distinct audiences, two brand voices, two loyalties, and the constant challenge of serving both without cannibalising either.</p>
+      <p>I managed one direct report and two indirect team leaders, each heading a dedicated brand team with five agents reporting to them. At its peak this was one of the largest teams in the business overall. The role shifted from implementation to strategic, with KPI management, performance management and structured team development all part of the day to day.</p>
+    </div>
+    <div class="merger-grid">
+      <div class="merger-cell teal-bg">
+        <p class="merger-cell-label">Mweb Team</p>
+        <h3 class="merger-cell-title">Team Leader plus 5 agents</h3>
+        <p class="merger-cell-body">Owned the Mweb brand voice, community and reputation across all social channels. Maintained the standards and systems already in place while adapting to the new group structure.</p>
+      </div>
+      <div class="merger-cell pink-bg">
+        <p class="merger-cell-label">Webafrica Team</p>
+        <h3 class="merger-cell-title">Team Leader plus 5 agents</h3>
+        <p class="merger-cell-body">Owned the Webafrica brand voice, community and reputation across all social channels. A distinct identity, a different audience, running in parallel with Mweb without overlap or confusion.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WEBAFRICA SECTION -->
+<div class="bg-pink-light">
+  <div class="section">
+    <p class="section-label pink">Group Online Reputation Manager, 2024 to 2025</p>
+    <h2 class="section-title">Two brands. <em class="pink">One strategy.</em></h2>
+    <div class="section-body">
+      <p>The complexity of managing two competing brands in the same category required a strategy that kept both audiences feeling fully served without ever feeling like they were sharing a team. Each brand had its own voice, its own tone, its own community expectations.</p>
+      <p>My role became increasingly strategic. I contributed to content creation based on insights gathered by my teams, fed intelligence to operations, sales, marketing and customer experience, and ensured both brands maintained the standards and response times their audiences expected.</p>
+    </div>
+
+    <div class="achievement pink">
+      <p class="achievement-label pink">Key Achievement</p>
+      <p class="achievement-text">Led a second full system migration, this time from Qualtrics Social Connect to Sprout Social across both brands. Rebuilt all automation, triggers and workflows from scratch for two distinct brand identities, recreated the brand voice frameworks and scripts for both teams, and trained the full combined team. Two brands, one platform, no loss of identity on either side.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- WHAT THIS DEMONSTRATES -->
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">What This Demonstrates</p>
+    <h2 class="section-title">From manager to strategist.<br><em>In three years.</em></h2>
+    <div class="section-body">
+      <p>This was not a linear role. It was three years of increasing complexity, a merger, a promotion, two full system migrations, and the challenge of managing two competing brands simultaneously. The growth from implementing social media strategy to owning it at a group level, with a team of twelve, is the headline.</p>
+      <p>The systems thinking, the people management, the cross-functional collaboration and the ability to keep two distinct brand voices consistent under one roof are the skills that came out of this period.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-cell">
+        <p class="result-num">3</p>
+        <p class="result-label">Years of progressive growth in one organisation</p>
+      </div>
+      <div class="result-cell">
+        <p class="result-num">2</p>
+        <p class="result-label">Full system migrations built and trained from scratch</p>
+      </div>
+      <div class="result-cell">
+        <p class="result-num">12</p>
+        <p class="result-label">Team members managed at peak across two brands</p>
+      </div>
+      <div class="result-cell">
+        <p class="result-num">1</p>
+        <p class="result-label">Promotion in the middle of a live merger</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- BACK -->
+<div class="back-strip">
+  <p class="back-strip-text">View more work</p>
+  <a href="index.html#work" class="back-link">Back to portfolio</a>
+</div>
+
+<footer>
+  <span class="footer-text">Greer Abrahams, Brand and Marketing Communication Specialist</span>
+  <span class="footer-text">2026</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working on Fire — Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black:   #111111;
+      --white:   #FFFFFF;
+      --page:    #F2F2F2;
+      --muted:   #777777;
+      --border:  #E2E2E2;
+      --dark:    #222222;
+      --navy:    #1A1A2E;
+      --yellow:  #FFF3C4;
+      --amber:   #FFF9D6;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--white); color: var(--black); line-height: 1.6; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 0.88rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero { background: var(--navy); color: var(--white); padding: 6rem 2.5rem 5rem; }
+    .hero-inner { max-width: 900px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #F5D76E; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: #F5D76E; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.1; color: var(--white); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: #F5D76E; }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.85; max-width: 640px; font-weight: 300; margin-bottom: 3.5rem; }
+    .hero-meta { display: flex; gap: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .meta-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.3rem; }
+    .meta-value { font-size: 0.88rem; color: var(--white); font-weight: 400; }
+
+    /* STATS */
+    .stats-strip { background: var(--amber); padding: 2.5rem; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: var(--serif); font-size: 2.25rem; font-weight: 400; color: var(--navy); line-height: 1; margin-bottom: 0.35rem; }
+    .stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .section-divider { height: 1px; background: var(--border); }
+    .bg-white { background: var(--white); }
+    .bg-page { background: var(--page); }
+    .bg-navy { background: var(--navy); }
+    .bg-amber { background: var(--amber); }
+
+    .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--navy); }
+    .section-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; color: var(--black); line-height: 1.3; margin-bottom: 1.25rem; }
+    .section-title em { font-style: italic; color: var(--navy); }
+    .section-body { font-size: 0.9rem; color: var(--muted); line-height: 1.9; max-width: 680px; }
+    .section-body p + p { margin-top: 1rem; }
+
+    /* WORK GRID */
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2.5rem; }
+    .work-cell { background: var(--white); padding: 2rem; }
+    .work-cell-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; }
+    .work-cell-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--black); margin-bottom: 0.6rem; line-height: 1.4; }
+    .work-cell-body { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
+
+    /* COVID */
+    .covid-strip { background: var(--navy); padding: 4rem 2.5rem; }
+    .covid-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .covid-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #F5D76E; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+    .covid-label::before { content: ''; display: block; width: 24px; height: 1px; background: #F5D76E; }
+    .covid-title { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; color: var(--white); line-height: 1.3; margin-bottom: 1.25rem; }
+    .covid-title em { font-style: italic; color: #F5D76E; }
+    .covid-body { font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.9; }
+    .covid-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; margin-bottom: 1rem; }
+    .covid-stat:last-child { margin-bottom: 0; }
+    .covid-stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: #F5D76E; line-height: 1; margin-bottom: 0.35rem; }
+    .covid-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+    /* CANADA */
+    .canada-strip { background: var(--amber); padding: 3.5rem 2.5rem; }
+    .canada-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
+    .canada-ghost { font-family: var(--serif); font-size: 5rem; font-weight: 700; color: var(--navy); line-height: 1; opacity: 0.1; }
+    .canada-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.75rem; }
+    .canada-title { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; color: var(--black); line-height: 1.35; margin-bottom: 0.75rem; }
+    .canada-body { font-size: 0.88rem; color: var(--muted); line-height: 1.85; }
+
+    /* RESULTS */
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 2.5rem; }
+    .result-cell { background: var(--white); padding: 1.75rem; text-align: center; }
+    .result-num { font-family: var(--serif); font-size: 2rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .result-label { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+    /* BACK */
+    .back-strip { background: var(--page); border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .back-strip-text { font-family: var(--serif); font-size: 1rem; color: var(--black); }
+    .back-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--navy); border-color: var(--navy); }
+
+    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-size: 0.7rem; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 768px) {
+      .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3.5rem; }
+      .stats-inner, .work-grid, .covid-inner, .canada-inner, .results-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.25rem; }
+      .covid-strip, .canada-strip { padding: 3rem 1.25rem; }
+      .back-strip { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Greer Abrahams</a>
+  <a href="index.html#work" class="nav-back">Back to portfolio</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Government · Working on Fire</p>
+    <h1 class="hero-title">Working on Fire.<br><em>Eight provinces. One voice.</em></h1>
+    <p class="hero-sub">Coordination, speed, and clear communication are not nice-to-haves in this environment. They are operational necessities. Reporting breaking fires in real time, coordinating online communication across eight provinces, and keeping firefighters, partner organisations and the public informed through fire awareness training, responsible fire use and community upliftment projects.</p>
+    <div class="hero-meta">
+      <div>
+        <p class="meta-label">Client</p>
+        <p class="meta-value">Working on Fire</p>
+      </div>
+      <div>
+        <p class="meta-label">Programme</p>
+        <p class="meta-value">EPWP, Dept. of Environment, Forestry and Fisheries, South African National Government</p>
+      </div>
+      <div>
+        <p class="meta-label">Role</p>
+        <p class="meta-value">National Social Media Specialist</p>
+      </div>
+      <div>
+        <p class="meta-label">Scope</p>
+        <p class="meta-value">8 Provinces</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Provinces covered across South Africa</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Firefighters and staff reached through COVID communication</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Firefighters dispatched to Alberta, Canada</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Fire seasons, winter and summer, managed annually</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">About the Organisation</p>
+    <h2 class="section-title">More than firefighting.<br><em>Skills, community and real impact.</em></h2>
+    <div class="section-body">
+      <p>Working on Fire is an Expanded Public Works Programme operating under the Department of Environment, Forestry and Fisheries, South African National Government, delivered through a public-private partnership model. Beyond firefighting, the programme focuses on fire awareness training, responsible fire use and community upliftment, creating meaningful skills development opportunities for young men and women across the country.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="bg-page">
+  <div class="section">
+    <p class="section-label">The Work</p>
+    <h2 class="section-title">Real emergencies.<br><em>Real consequences.</em></h2>
+    <div class="section-body">
+      <p>As National Social Media Specialist, I reported directly to the Head of Communication and worked within the executive communication structure. The role covered the full communication spectrum, from breaking fire alerts to internal stakeholder engagement and public fire safety awareness.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-cell">
+        <p class="work-cell-label">Real-Time Fire Reporting</p>
+        <h3 class="work-cell-title">Breaking fire alerts</h3>
+        <p class="work-cell-body">The 2021 Cape Town Fire on De Waal Drive. Freestate fires. Real emergencies, fast-paced and demanding. Actively monitored and reported breaking fires across South Africa during both winter and summer fire seasons, ensuring accurate, timely information reached the right audiences, from operational teams to the general public.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Content Creation</p>
+        <h3 class="work-cell-title">On the ground, phone in hand</h3>
+        <p class="work-cell-body">Created original content including short-form video clips and raw photography captured in the field, feeding material to videographers and other communications specialists as part of the national editorial communications team. Real-world documentation of fire response operations turned into social media content that built public awareness and organisational credibility.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Internal Communication</p>
+        <h3 class="work-cell-title">Stakeholder engagement and collateral</h3>
+        <p class="work-cell-body">Worked with internal stakeholders to develop fire safety awareness material and communication collateral across social media. Developed the internal social media responsible use policy and trained all firefighters and formal staff across the business. Built the social media strategy to include real-time reporting, pre-made content and editorial content, ensuring consistent messaging across a complex national structure.</p>
+      </div>
+      <div class="work-cell">
+        <p class="work-cell-label">Partner Liaison</p>
+        <h3 class="work-cell-title">Coordinating across firefighting associations</h3>
+        <p class="work-cell-body">Maintained active relationships with firefighting associations across all eight provinces. Kept all parties informed from a social media and communication perspective, particularly during high-pressure fire season periods when speed and accuracy were critical.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="covid-strip">
+  <div class="covid-inner">
+    <div>
+      <p class="covid-label">Above and Beyond</p>
+      <h2 class="covid-title">Incident Command Centre.<br><em>COVID-19.</em></h2>
+      <div class="covid-body">
+        <p>During the COVID-19 pandemic, I was selected as part of the national Incident Command Centre communication team, responsible for reaching, informing and educating over 500 firefighters and staff deployed across South Africa on vaccination protocols, safety procedures, and all COVID compliance requirements.</p>
+        <p>Firefighters on active deployment could not simply attend a briefing. Communication had to reach them wherever they were, be clear enough to act on immediately, and accurate enough to keep them safe.</p>
+      </div>
+    </div>
+    <div>
+      <div class="covid-stat">
+        <div class="covid-stat-num">500+</div>
+        <div class="covid-stat-label">Firefighters and staff reached with COVID protocols, vaccination information and safety compliance communication</div>
+      </div>
+      <div class="covid-stat">
+        <div class="covid-stat-num">ICC</div>
+        <div class="covid-stat-label">National government COVID-19 Incident Command Centre, Social Media and Communications representative</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="canada-strip">
+  <div class="canada-inner">
+    <div class="canada-ghost">100+</div>
+    <div>
+      <p class="canada-label">International Deployment</p>
+      <h3 class="canada-title">100+ South African firefighters dispatched to Alberta, Canada.</h3>
+      <p class="canada-body">The international deployment of over 100 firefighters to assist with wildfires in Alberta, Canada happened during COVID, which added significant logistical and communication complexity to an already demanding operation. Supporting the messaging and public communication around a deployment of that scale, under those conditions, remains one of the standout professional moments of my career.</p>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">What This Demonstrates</p>
+    <h2 class="section-title">Communication that cannot afford to fail.</h2>
+    <div class="section-body">
+      <p>Real-time fire reporting, COVID safety communication to deployed firefighters, and coordination across eight provinces in a national emergency context required accuracy, speed and clarity at a standard that most communicators never have to meet. This is where the foundation was built.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-cell">
+        <p class="result-num">8</p>
+        <p class="result-label">Provinces, one consistent national voice</p>
+      </div>
+      <div class="result-cell">
+        <p class="result-num">ICC</p>
+        <p class="result-label">National government COVID-19 Incident Command Centre</p>
+      </div>
+      <div class="result-cell">
+        <p class="result-num">100+</p>
+        <p class="result-label">Firefighters deployed internationally to Alberta, Canada</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="back-strip">
+  <p class="back-strip-text">View more work</p>
+  <a href="index.html#work" class="back-link">Back to portfolio</a>
+</div>
+
+<footer>
+  <span class="footer-text">Greer Abrahams, Brand and Marketing Communication Specialist</span>
+  <span class="footer-text">2026</span>
+</footer>
+
+</body>
+</html>

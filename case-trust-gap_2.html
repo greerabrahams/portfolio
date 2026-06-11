@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Trust Gap — Brand Strategy & Copy | Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --ttg-black:   #0D0D0D;
+      --ttg-dark:    #161616;
+      --ttg-card:    #1E1E1E;
+      --ttg-border:  rgba(255,255,255,0.08);
+      --ttg-white:   #FFFFFF;
+      --ttg-muted:   rgba(255,255,255,0.45);
+      --ttg-dim:     rgba(255,255,255,0.2);
+      --ttg-accent:  #C8A96E;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    body { font-family: var(--sans); background: var(--ttg-black); color: var(--ttg-white); line-height: 1.6; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--ttg-border); position: sticky; top: 0; background: var(--ttg-black); z-index: 100; }
+    .nav-logo { font-family: var(--serif); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ttg-white); text-decoration: none; }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ttg-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--ttg-accent); }
+
+    /* HERO */
+    .hero { padding: 7rem 2.5rem 5rem; max-width: 900px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ttg-accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--ttg-accent); }
+    .hero-title { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.1; color: var(--ttg-white); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--ttg-accent); }
+    .hero-sub { font-size: 1rem; color: var(--ttg-muted); line-height: 1.85; max-width: 560px; font-weight: 300; margin-bottom: 3.5rem; }
+    .hero-meta { display: flex; gap: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--ttg-border); flex-wrap: wrap; }
+    .hero-meta-item {}
+    .meta-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ttg-dim); margin-bottom: 0.3rem; }
+    .meta-value { font-size: 0.88rem; color: var(--ttg-white); font-weight: 400; }
+
+    /* SECTIONS */
+    .section { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .section-divider { height: 1px; background: var(--ttg-border); }
+    .section-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ttg-accent); margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; color: var(--ttg-white); line-height: 1.3; margin-bottom: 1.25rem; }
+    .section-title em { font-style: italic; color: var(--ttg-accent); }
+    .section-body { font-size: 0.9rem; color: var(--ttg-muted); line-height: 1.9; max-width: 640px; }
+    .section-body p + p { margin-top: 1rem; }
+
+    /* BRIEF BLOCK */
+    .brief-block { background: var(--ttg-card); border-left: 2px solid var(--ttg-accent); padding: 2rem; margin-top: 2rem; }
+    .brief-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ttg-accent); margin-bottom: 0.75rem; }
+    .brief-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.85; }
+
+    /* HEADLINE SHOWCASE */
+    .headline-showcase { background: var(--ttg-dark); padding: 4rem 2.5rem; margin: 0; border-top: 1px solid var(--ttg-border); border-bottom: 1px solid var(--ttg-border); }
+    .headline-inner { max-width: 900px; margin: 0 auto; }
+    .hs-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ttg-accent); margin-bottom: 2rem; }
+    .hs-main { font-family: var(--serif); font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 400; color: var(--ttg-white); line-height: 1.2; margin-bottom: 0.75rem; }
+    .hs-main em { font-style: italic; color: var(--ttg-accent); }
+    .hs-sub { font-size: 1rem; color: var(--ttg-muted); line-height: 1.8; max-width: 540px; font-weight: 300; margin-top: 1rem; }
+
+    /* MESSAGING GRID */
+    .msg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--ttg-border); margin-top: 2.5rem; }
+    .msg-cell { background: var(--ttg-dark); padding: 2rem; }
+    .msg-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--ttg-accent); opacity: 0.3; line-height: 1; margin-bottom: 1rem; }
+    .msg-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; color: var(--ttg-white); margin-bottom: 0.6rem; line-height: 1.4; }
+    .msg-body { font-size: 0.83rem; color: var(--ttg-muted); line-height: 1.8; }
+
+    /* COPY SAMPLES */
+    .copy-sample { background: var(--ttg-card); padding: 2rem; margin-top: 1px; border-left: 2px solid var(--ttg-border); transition: border-color 0.2s; }
+    .copy-sample:hover { border-left-color: var(--ttg-accent); }
+    .copy-context { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ttg-accent); margin-bottom: 0.75rem; }
+    .copy-text { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; color: var(--ttg-white); line-height: 1.55; font-style: italic; }
+    .copy-note { font-size: 0.78rem; color: var(--ttg-dim); margin-top: 0.75rem; line-height: 1.6; }
+
+    /* PHILOSOPHY STRIP */
+    .philosophy { background: var(--ttg-card); padding: 4rem 2.5rem; border-top: 1px solid var(--ttg-border); border-bottom: 1px solid var(--ttg-border); text-align: center; }
+    .philosophy-inner { max-width: 680px; margin: 0 auto; }
+    .philosophy-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ttg-dim); margin-bottom: 1.5rem; }
+    .philosophy-quote { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 400; font-style: italic; color: var(--ttg-white); line-height: 1.5; }
+    .philosophy-attr { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ttg-accent); margin-top: 1.25rem; }
+
+    /* RESULTS */
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ttg-border); margin-top: 2.5rem; }
+    .result-cell { background: var(--ttg-dark); padding: 2rem; text-align: center; }
+    .result-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--ttg-accent); line-height: 1; margin-bottom: 0.4rem; }
+    .result-label { font-size: 0.72rem; color: var(--ttg-muted); line-height: 1.5; letter-spacing: 0.04em; }
+
+    /* BACK */
+    .back-strip { background: var(--ttg-dark); border-top: 1px solid var(--ttg-border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .back-strip-text { font-family: var(--serif); font-size: 1rem; color: var(--ttg-white); }
+    .back-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ttg-muted); text-decoration: none; border-bottom: 1px solid var(--ttg-border); padding-bottom: 0.25rem; transition: color 0.2s, border-color 0.2s; }
+    .back-link:hover { color: var(--ttg-accent); border-color: var(--ttg-accent); }
+
+    /* FOOTER */
+    footer { padding: 1.5rem 2.5rem; border-top: 1px solid var(--ttg-border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-size: 0.7rem; color: var(--ttg-dim); }
+
+    @media (max-width: 768px) {
+      .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 4rem; }
+      .msg-grid, .results-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.25rem; }
+      .headline-showcase, .philosophy { padding: 3rem 1.25rem; }
+      .back-strip { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Greer Abrahams</a>
+  <a href="index.html#work" class="nav-back">Back to portfolio</a>
+</nav>
+
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Brand Strategy &amp; Copy</p>
+  <h1 class="hero-title">The Trust Gap.<br><em>Built from conviction.</em></h1>
+  <p class="hero-sub">A passion project that became a real proposal. I offered to help refresh the look and feel of The Trust Gap's starter website, and this is the concept I came up with.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <p class="meta-label">Client</p>
+      <p class="meta-value">The Trust Gap</p>
+    </div>
+    <div class="hero-meta-item">
+      <p class="meta-label">Role</p>
+      <p class="meta-value">Design Direction &amp; AI-Directed Execution</p>
+    </div>
+    <div class="hero-meta-item">
+      <p class="meta-label">Deliverable</p>
+      <p class="meta-value">Homepage Concept &amp; Full Copy</p>
+    </div>
+    <div class="hero-meta-item">
+      <p class="meta-label">Status</p>
+      <p class="meta-value">Concept Stage</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- THE BRIEF -->
+<div class="section">
+  <p class="section-label">The Background</p>
+  <h2 class="section-title">A passion project that became<br><em>a real conversation.</em></h2>
+  <div class="section-body">
+    <p>The Trust Gap is a Level B-BBEE certified independent digital consultancy based in Cape Town. A firm that helps businesses grow through data-led digital strategy, with a hands-on approach and no agency overhead.</p>
+    <p>The company had a starter website in place — the structure and content were there, but the look and feel needed work. As someone on the team, I asked if I could take a stab at a fresh concept as a passion project. The result is what you see here.</p>
+    <p>Using AI as my production tool, I worked from the existing content and restructured the visual presentation, created a new look and feel, and proposed a logo direction. It is currently being considered as the basis for a full rebrand.</p>
+  </div>
+  <div class="brief-block">
+    <p class="brief-label">My Contribution</p>
+    <p class="brief-text">The content and messaging architecture belonged to the existing site. My contribution was the visual concept, the layout, the design direction, and the logo. I did not write the copy — I made it look like it deserved to be read.</p>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- HEADLINE SHOWCASE -->
+<div class="headline-showcase">
+  <div class="headline-inner">
+    <p class="hs-label">Hero Headline</p>
+    <h2 class="hs-main">Your data already knows<br>the answer. <em>We help you act on it.</em></h2>
+    <p class="hs-sub">The headline does two things at once: it tells the client their problem is already solvable, and it positions The Trust Gap as the system that turns insight into action. No jargon. No promise of magic. Just a clear statement of what is possible.</p>
+  </div>
+</div>
+
+
+<!-- MESSAGING ARCHITECTURE -->
+<div class="section">
+  <p class="section-label">Messaging Architecture</p>
+  <h2 class="section-title">Four problems. Named precisely.</h2>
+  <div class="section-body">
+    <p>The homepage identifies the four failure modes that The Trust Gap's ideal clients recognise in themselves. Each one is written to produce a moment of recognition, not explanation.</p>
+  </div>
+
+  <div class="msg-grid">
+    <div class="msg-cell">
+      <div class="msg-num">01</div>
+      <h3 class="msg-title">Data without direction</h3>
+      <p class="msg-body">Dashboards full of numbers, but no model connecting them to the next decision. You know something is there. You just cannot see it yet.</p>
+    </div>
+    <div class="msg-cell">
+      <div class="msg-num">02</div>
+      <h3 class="msg-title">Teams talking past each other</h3>
+      <p class="msg-body">Technical and marketing teams work in parallel and rarely in sync. What engineers build and what growth needs never quite lines up.</p>
+    </div>
+    <div class="msg-cell">
+      <div class="msg-num">03</div>
+      <h3 class="msg-title">Strategy built for someone else's market</h3>
+      <p class="msg-body">Global playbooks ignore South Africa's complexity. Mobile-only users. Prepaid data. A fundamentally bifurcated economy.</p>
+    </div>
+    <div class="msg-cell">
+      <div class="msg-num">04</div>
+      <h3 class="msg-title">No repeatable process</h3>
+      <p class="msg-body">When something works, nobody can say why. When it does not, there is no framework to fix it. Every campaign starts from scratch.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- COPY SAMPLES -->
+<div class="section">
+  <p class="section-label">Selected Copy</p>
+  <h2 class="section-title">The words that do the work.</h2>
+  <div class="section-body">
+    <p>Every line was written to close a specific gap: between what the client knows something is wrong and what they do about it.</p>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <div class="copy-sample">
+      <p class="copy-context">Section header — Problem framing</p>
+      <p class="copy-text">Growth strategies that feel like guesswork are.</p>
+      <p class="copy-note">The sentence breaks in the middle on purpose. The reader finishes it themselves before the page does. It lands harder that way.</p>
+    </div>
+    <div class="copy-sample">
+      <p class="copy-context">Section header — Solution framing</p>
+      <p class="copy-text">A system, not a campaign.</p>
+      <p class="copy-note">Six words that reframe the entire client relationship. Not a retainer. Not a deliverable. A system that belongs to them after we leave.</p>
+    </div>
+    <div class="copy-sample">
+      <p class="copy-context">Market positioning — South Africa specific</p>
+      <p class="copy-text">South Africa is not one market. We know both.</p>
+      <p class="copy-note">Acknowledges the mass market and affluent market divide without describing it yet. Creates curiosity and signals local expertise simultaneously.</p>
+    </div>
+    <div class="copy-sample">
+      <p class="copy-context">Core philosophy line</p>
+      <p class="copy-text">Sustainable growth is not a series of guesses. It is a repeatable science.</p>
+      <p class="copy-note">The positioning stake in the ground. Everything else on the page points to this.</p>
+    </div>
+    <div class="copy-sample">
+      <p class="copy-context">CTA — Discovery call</p>
+      <p class="copy-text">No pitch. No pressure. An honest conversation about what is possible.</p>
+      <p class="copy-note">Removes the fear of being sold to. Positions the call as value regardless of whether they buy. That is how trust is built before a relationship starts.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- PHILOSOPHY STRIP -->
+<div class="philosophy">
+  <div class="philosophy-inner">
+    <p class="philosophy-label">The Trust Gap Core Philosophy</p>
+    <p class="philosophy-quote">Sustainable growth is not a series of guesses. It is a repeatable science.</p>
+    <p class="philosophy-attr">The Trust Gap Core Philosophy</p>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- LOGO -->
+<div class="section">
+  <p class="section-label">The Logo</p>
+  <h2 class="section-title">A mark that earns its place.</h2>
+  <div class="section-body">
+    <p>The logo concept started with the name. The Trust Gap. A gap is not a problem, it is a space between where something is and where it could be. The question was: what visual language captures that idea without being literal or obvious?</p>
+    <p>The answer came from thinking about what the business actually does. The Trust Gap works with data. It identifies the distance between what a business knows and what it acts on. That is not an abstract concept, it is a measurable one. And there is one universal visual that communicates measurable movement better than anything else: a stock market performance line.</p>
+    <p>The line moves, dips, recovers, and then hits an inflection point, that single dot where direction changes. That dot is the whole story. It is the moment data becomes a decision. It is the moment the gap starts closing. It is exactly what The Trust Gap sells.</p>
+    <p>Pairing that mark with a serif wordmark, THE in spaced capitals above, Trust in large italic, GAP in spaced capitals below, creates a lockup that feels both analytical and authoritative. It does not look like a tech startup. It does not look like a traditional consultancy. It looks like something new, which is exactly what The Trust Gap is.</p>
+  </div>
+  <div style="margin-top:2rem; border:1px solid var(--ttg-border); overflow:hidden;">
+    <img src="trust-gap-logo-sheet.png"
+         alt="The Trust Gap logo across primary light, primary dark, on white, on black, and on warm grey backgrounds"
+         style="width:100%; display:block;" />
+  </div>
+  <div style="margin-top:1px; background:var(--ttg-card); padding:1.5rem 2rem; border-left:2px solid var(--ttg-accent);">
+    <p style="font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--ttg-accent); margin-bottom:0.6rem;">The Thinking in One Line</p>
+    <p style="font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--ttg-white); line-height:1.6;">The dot on the line is not decoration. It is the moment everything changes. That is what we do.</p>
+  </div>
+</div><!-- WHAT THIS DEMONSTRATES -->
+<div class="section">
+  <p class="section-label">What This Demonstrates</p>
+  <h2 class="section-title">Showing up before you are asked to.</h2>
+  <div class="section-body">
+    <p>This was a voluntary project. Nobody briefed me, nobody asked for it. I saw an opportunity to contribute something useful and I made it happen. That instinct — to improve what is in front of you without waiting for permission — is something I bring to every role I am in.</p>
+    <p>The execution used AI as the production tool. The design direction, visual concept, and logo proposal were mine.</p>
+  </div>
+
+  <div class="results-grid">
+    <div class="result-cell">
+      <div class="result-num">1</div>
+      <p class="result-label">Voluntary concept, no brief required</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-num">1</div>
+      <p class="result-label">Logo direction proposed and in consideration</p>
+    </div>
+    <div class="result-cell">
+      <div class="result-num">WIP</div>
+      <p class="result-label">Being considered as the basis for a full rebrand</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- BACK -->
+<div class="back-strip">
+  <p class="back-strip-text">View more work</p>
+  <a href="index.html#work" class="back-link">Back to portfolio</a>
+</div>
+
+<footer>
+  <span class="footer-text">Greer Abrahams &middot; Brand &amp; Marketing Communication Specialist</span>
+  <span class="footer-text">&copy; 2026</span>
+</footer>
+
+</body>
+</html>

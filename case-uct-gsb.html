@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCT GSB Social Media, Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ─────────────────────────────────────────────
+       Portfolio ivory palette (Greer's established brand)
+       + UCT GSB nods: deep forest green + warm gold
+    ──────────────────────────────────────────────────────── */
+    :root {
+      --ivory:      #F5F0E8;   /* page background */
+      --sand:       #EDE8DE;   /* card / panel background */
+      --ink:        #1C1A17;   /* primary text */
+      --muted:      #8C8880;   /* secondary text */
+      --coral:      #E05A3A;   /* Greer's accent */
+      --uct-green:  #002B4E;   /* UCT GSB forest green */
+      --uct-gold:   #0088CC;   /* UCT GSB warm gold */
+      --uct-light:  #EBF4FB;   /* pale green tint for panels */
+      --border:     rgba(28,26,23,0.10);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--ivory);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--coral); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      background: var(--uct-green);
+      color: #fff;
+      padding: 5rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle meridian-line pattern, nods to Africa, UCT's globe motif */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 48px,
+          rgba(255,255,255,0.04) 48px,
+          rgba(255,255,255,0.04) 49px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 48px,
+          rgba(255,255,255,0.04) 48px,
+          rgba(255,255,255,0.04) 49px
+        );
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-breadcrumb {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--uct-gold);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      max-width: 720px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta-strip {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 0.5px solid rgba(255,255,255,0.15);
+    }
+    .hero-meta-item {}
+    .meta-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.2rem;
+    }
+    .meta-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* ── GOLDEN THREAD PULLQUOTE ────────────────────────────── */
+    .golden-thread {
+      background: #002B4E;
+      padding: 3rem 2.5rem;
+    }
+    .golden-thread-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .gt-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+      margin-top: -1rem;
+    }
+    .gt-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: #fff;
+      line-height: 1.5;
+    }
+    .gt-attribution {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── SHARED SECTION ─────────────────────────────────────── */
+    .section {
+      padding: 4.5rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-divider {
+      height: 0.5px;
+      background: var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--coral);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      max-width: 640px;
+    }
+    .section-body p + p { margin-top: 0.9rem; }
+
+    /* ── BRIEF CALLOUT ──────────────────────────────────────── */
+    .brief-box {
+      background: var(--uct-light);
+      border-left: 3px solid var(--uct-green);
+      padding: 1.5rem 1.75rem;
+      margin-top: 1.75rem;
+    }
+    .brief-box-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--uct-green);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .brief-box-text {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    /* ── TONE PILLARS ───────────────────────────────────────── */
+    .tone-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 1.75rem;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+    }
+    .tone-card {
+      background: var(--sand);
+      padding: 1.25rem;
+    }
+    .tone-word {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--uct-green);
+      margin-bottom: 0.35rem;
+    }
+    .tone-not {
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+    .tone-not span {
+      color: var(--coral);
+      text-decoration: line-through;
+    }
+
+    /* ── DELIVERABLES ───────────────────────────────────────── */
+    .deliverable {
+      margin-bottom: 3.5rem;
+    }
+    .deliverable-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .deliverable-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--uct-green);
+      padding: 0.25rem 0.75rem;
+      font-weight: 600;
+    }
+    .deliverable-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+
+    /* Social post mockups */
+    .mockup-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Instagram / Facebook square post */
+    .post-square {
+      aspect-ratio: 1;
+      background: var(--uct-green);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-square::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 30px,
+        rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px
+      );
+    }
+    .post-sq-top {
+      position: relative;
+      z-index: 1;
+    }
+    .post-sq-uct {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--uct-gold);
+      margin-bottom: 0.5rem;
+    }
+    .post-sq-program {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      color: #fff;
+      line-height: 1.35;
+    }
+    .post-sq-bottom {
+      position: relative;
+      z-index: 1;
+    }
+    .post-sq-stat {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--uct-gold);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .post-sq-stat-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+    .post-sq-logo {
+      margin-top: 1rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      border-top: 0.5px solid rgba(255,255,255,0.15);
+      padding-top: 0.5rem;
+    }
+
+    /* Second graphic variant */
+    .post-square-v2 {
+      aspect-ratio: 1;
+      background: var(--ivory);
+      border: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .post-v2-bar {
+      height: 3px;
+      background: #002B4E;
+      width: 40px;
+      margin-bottom: 1rem;
+    }
+    .post-v2-program {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: var(--uct-green);
+      line-height: 1.4;
+    }
+    .post-v2-tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .post-v2-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .post-v2-cta {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--uct-green);
+      font-weight: 700;
+      border-bottom: 1px solid var(--uct-gold);
+      padding-bottom: 2px;
+    }
+    .post-v2-brand {
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Caption cards */
+    .captions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .caption-card {
+      background: var(--sand);
+      padding: 1.25rem;
+      border-top: 2px solid var(--border);
+    }
+    .caption-platform {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .platform-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--uct-green);
+    }
+    .caption-text {
+      font-size: 0.82rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .caption-hashtags {
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--uct-green);
+    }
+
+    /* PGDip video mockup */
+    .video-mockup {
+      background: var(--uct-green);
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+    /* Simulated "scenes" via CSS layers */
+    .video-mockup::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(27,67,50,0.9) 0%, rgba(27,67,50,0.4) 100%);
+    }
+    .video-scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .video-scene-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--uct-gold);
+      margin-bottom: 0.75rem;
+    }
+    .video-scene-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      color: #fff;
+      line-height: 1.3;
+      max-width: 560px;
+    }
+    .video-scene-sub {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .video-play {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      z-index: 3;
+    }
+    .play-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.5rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      z-index: 3;
+    }
+    .video-scenes-strip {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .scene-thumb {
+      flex: 1;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .scene-thumb-label {
+      position: relative;
+      z-index: 1;
+    }
+    .scene-1 { background: #1B4332; }
+    .scene-2 { background: #2D6A4F; }
+    .scene-3 { background: #1B4332; }
+    .scene-4 { background: #C8952A; }
+    .scene-5 { background: #1B4332; }
+    .scene-active { outline: 2px solid var(--uct-gold); }
+
+    /* ── TOOLS SECTION ──────────────────────────────────────── */
+    .tools-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .tool-badge {
+      background: var(--sand);
+      border: 0.5px solid var(--border);
+      padding: 0.5rem 1.1rem;
+      font-size: 0.8rem;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tool-badge .tool-icon { font-size: 1rem; }
+
+    /* ── RESULTS STRIP ──────────────────────────────────────── */
+    .results-strip {
+      background: var(--uct-green);
+      padding: 3rem 2.5rem;
+      margin-top: 0;
+    }
+    .results-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .result-item {
+      text-align: center;
+    }
+    .result-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--uct-gold);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .result-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ── BACK TO PORTFOLIO ──────────────────────────────────── */
+    .back-strip {
+      background: var(--sand);
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .back-strip-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .back-link {
+      display: inline-block;
+      padding: 0.7rem 1.75rem;
+      border: 1px solid var(--coral);
+      color: var(--coral);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover { background: var(--coral); color: var(--ivory); }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      padding: 1.5rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-text { font-size: 0.73rem; color: var(--muted); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav, .hero, .section, .golden-thread, .results-strip, .back-strip { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3rem; padding-bottom: 3rem; }
+      .hero-meta-strip { gap: 1.5rem; }
+      .tone-grid { grid-template-columns: 1fr 1fr; }
+      .mockup-row { grid-template-columns: 1fr; }
+      .captions-grid { grid-template-columns: 1fr; }
+      .results-inner { grid-template-columns: 1fr 1fr; }
+      .golden-thread-inner { flex-direction: column; gap: 0.5rem; }
+      .gt-mark { font-size: 3rem; }
+      .back-strip { flex-direction: column; gap: 1rem; text-align: center; }
+      .video-scenes-strip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Greer Abrahams</a>
+  <a href="index.html#work" class="nav-back">← Back to portfolio</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-breadcrumb">Case Study · Social Media Content</p>
+    <h1>UCT Graduate School of Business</h1>
+    <p class="hero-sub">No brand guide. No template library. No handover. Strategy, brand archaeology, creative direction, and full production, built from scratch in a single session using AI-directed methodology.</p>
+    <div class="hero-meta-strip">
+      <div class="hero-meta-item">
+        <div class="meta-label">Client</div>
+        <div class="meta-value">UCT GSB</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">Social Media Content Professional</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Deliverables</div>
+        <div class="meta-value">Brand Guide · Templates · Graphics · Video · Captions</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Method</div>
+        <div class="meta-value">AI-Directed · Brand Archaeology · Python Production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GOLDEN THREAD -->
+<div class="golden-thread">
+  <div class="golden-thread-inner">
+    <div class="gt-mark">"</div>
+    <div>
+      <p class="gt-quote">By 2050, one in four people under 25 will be African. This is where that future is being built.</p>
+      <p class="gt-attribution">Golden thread line, MPhil in Inclusive Innovation campaign</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- THE REAL STORY -->
+<div class="section">
+  <p class="section-label">The Real Story</p>
+  <h2 class="section-title">Thrown in at the deep end. Swam anyway.</h2>
+  <div class="section-body">
+    <p>This is not a polished case study about a smooth client handover. It's the opposite, and that's exactly why it matters.</p>
+    <p>I came into this role with limited handover. No brand guide. No style documentation. No template library. Just a Canva account with some scattered images and a brief that expected strategy, creation, direction, planning, and implementation, simultaneously, immediately.</p>
+    <p>Most people would wait for a proper brief. I built one.</p>
+  </div>
+
+  <!-- TIMELINE OF WHAT HAPPENED -->
+  <div style="margin: 2rem 0; position:relative;">
+    <div style="position:absolute; left:16px; top:0; bottom:0; width:2px; background:var(--border);"></div>
+
+    <div style="display:flex; gap:1.5rem; margin-bottom:1.5rem; position:relative;">
+      <div style="width:34px; height:34px; min-width:34px; background:var(--uct-green); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; position:relative; z-index:1;">1</div>
+      <div style="padding-top:0.35rem;">
+        <p style="font-size:0.88rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem;">No brand guide existed. So I created one.</p>
+        <p style="font-size:0.83rem; color:var(--muted); line-height:1.75;">Using Claude AI as an analytical tool, I fed in the existing Canva templates, scattered, inconsistent, undocumented, and extracted a complete brand system from scratch. Colour hex codes, typography hierarchy, spacing rules, layout logic, template type taxonomy. Built from thin air, on the same morning the work was due.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:1.5rem; margin-bottom:1.5rem; position:relative;">
+      <div style="width:34px; height:34px; min-width:34px; background:var(--uct-green); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; position:relative; z-index:1;">2</div>
+      <div style="padding-top:0.35rem;">
+        <p style="font-size:0.88rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem;">Then I built the template library from the guide I'd just written.</p>
+        <p style="font-size:0.83rem; color:var(--muted); line-height:1.75;">14 approved template variants across 5 background types, gradient, blue panel, white, grey dot grid, diagonal line, in both 1080×1080px and 9×16 formats. Every template built to spec. None of these existed this morning. Every single one was produced today, using AI-directed Python generation, working from the brand guide I had extracted minutes before.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:1.5rem; margin-bottom:1.5rem; position:relative;">
+      <div style="width:34px; height:34px; min-width:34px; background:var(--uct-green); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; position:relative; z-index:1;">3</div>
+      <div style="padding-top:0.35rem;">
+        <p style="font-size:0.88rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem;">Then I wrote the strategy, copy, and produced the campaign assets.</p>
+        <p style="font-size:0.83rem; color:var(--muted); line-height:1.75;">With a working brand system now in hand, I briefed and directed the MPhil and PGDip campaigns, graphics, motion video, and platform-specific captions for Instagram, Facebook, and LinkedIn, all on the same day. The approved MPhil graphic and the 21-second PGDip motion graphic below are the outputs.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:1.5rem; position:relative;">
+      <div style="width:34px; height:34px; min-width:34px; background:var(--coral); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; position:relative; z-index:1;">✓</div>
+      <div style="padding-top:0.35rem;">
+        <p style="font-size:0.88rem; font-weight:700; color:var(--coral); margin-bottom:0.3rem;">All of it: one person, one morning, one AI tool, zero prior documentation.</p>
+        <p style="font-size:0.83rem; color:var(--muted); line-height:1.75;">This is what AI-fluent marketing looks like in practice. Not replacement. Acceleration. The strategic judgment, brand instinct, and creative direction are human. The production speed is not.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- BRAND GUIDE: THE ARTEFACT -->
+<div class="section">
+  <p class="section-label">The Brand Guide I Built</p>
+  <h2 class="section-title">From nothing, to a working brand system in one session</h2>
+  <div class="section-body">
+    <p>This is the brand guide I extracted and documented before any production work began. It did not exist before I created it. It covers the full colour palette with hex codes, typography hierarchy with size specifications, layout and spacing rules, the complete set of identified template types, and a Canva setup checklist ready for any team member to use.</p>
+    <p>Built using Claude AI as a brand analysis tool, feeding in visual reference, interrogating the design system, and codifying the output into a usable document. This is <strong>brand archaeology</strong>: reconstructing a brand system from its artefacts when no documentation exists.</p>
+  </div>
+
+  <!-- BRAND GUIDE IMAGE -->
+  <div style="margin-top:1.75rem; border:0.5px solid var(--border); overflow:hidden;">
+    <div style="background:var(--uct-green); padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+      <div>
+        <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.2rem;">Created by Greer Abrahams using Claude AI · June 2026</p>
+        <p style="font-size:0.88rem; font-weight:600; color:#fff;">UCT GSB Extracted Brand Guide, colour, typography, layout, template taxonomy</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.12); padding:0.4rem 0.9rem; border:1px solid rgba(255,255,255,0.2);">
+        <p style="font-size:0.7rem; color:#fff; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Created this morning</p>
+      </div>
+    </div>
+    <img src="uct_gsb_brand_guide_extracted.png"
+         alt="UCT GSB extracted brand guide showing colour palette, typography, layout rules, template types and Canva setup checklist, created by Greer Abrahams using Claude AI"
+         style="width:100%; display:block;" />
+  </div>
+
+  <!-- WHAT THIS PROVES -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1.5rem;">
+    <div style="background:var(--sand); padding:1.25rem; border-top:2px solid var(--uct-green);">
+      <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem;">Brand Interpretation</p>
+      <p style="font-size:0.8rem; color:var(--muted); line-height:1.65;">Reading visual assets and extracting the underlying design system, even when no documentation exists.</p>
+    </div>
+    <div style="background:var(--sand); padding:1.25rem; border-top:2px solid var(--uct-green);">
+      <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem;">AI as Analytical Tool</p>
+      <p style="font-size:0.8rem; color:var(--muted); line-height:1.65;">Using Claude not just for copy, but for systematic brand analysis, colour extraction, typographic hierarchy, layout codification.</p>
+    </div>
+    <div style="background:var(--sand); padding:1.25rem; border-top:2px solid var(--uct-green);">
+      <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem;">Immediate Operability</p>
+      <p style="font-size:0.8rem; color:var(--muted); line-height:1.65;">From zero documentation to a Canva-ready brand system and live production assets, in a single working session.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT THE CLIENT -->
+<div class="section">
+  <p class="section-label">About the Client</p>
+  <h2 class="section-title">A world-class business school with a distinctly African perspective</h2>
+  <div class="section-body">
+    <p>The UCT Graduate School of Business is one of Africa's leading business schools, located in Cape Town. Its programmes attract students and faculty from across the continent and the world.</p>
+    <p>The brief required navigating a very specific tonal balance, and getting it right mattered. UCT GSB's brand speaks with authority earned over decades. Every word had to earn its place.</p>
+  </div>
+
+  <div class="brief-box">
+    <p class="brief-box-label">The Tonal Brief</p>
+    <p class="brief-box-text">Proud but not boastful. Warm but not casual. Confident and evidence-led. Africa is always framed as a competitive advantage, never a limitation.</p>
+  </div>
+
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tone-word">Proud</div>
+      <div class="tone-not">not <span>boastful</span></div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-word">Warm</div>
+      <div class="tone-not">not <span>casual</span></div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-word">Confident</div>
+      <div class="tone-not">not <span>arrogant</span></div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-word">Evidence-led</div>
+      <div class="tone-not">not <span>vague</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- DELIVERABLE 1: MPhil -->
+<div class="section">
+  <p class="section-label">Deliverable One</p>
+  <h2 class="section-title">MPhil in Inclusive Innovation</h2>
+
+  <div class="deliverable">
+    <div class="deliverable-header">
+      <span class="deliverable-tag">Graphics</span>
+      <span class="deliverable-title">Two approved 1080×1080px social media graphics</span>
+    </div>
+
+    <!-- REAL APPROVED GRAPHIC -->
+    <div style="margin-bottom: 1rem;">
+      <div style="display:inline-block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem;">Approved graphic · 1080×1080px · Instagram / Facebook</div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; align-items:start;">
+        <div>
+          <img src="mphil_v2_final.png"
+               alt="MPhil in Inclusive Innovation, UCT GSB approved social media graphic showing Africa map, 1 in 4 stat, and Where the future is built headline"
+               style="width:100%; display:block; border: 0.5px solid var(--border);" />
+        </div>
+        <div style="background:var(--sand); padding:1.5rem; border-left:3px solid var(--uct-green); height:100%;">
+          <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--uct-green); font-weight:700; margin-bottom:0.75rem;">Design notes</p>
+          <p style="font-size:0.85rem; color:var(--ink); line-height:1.8; margin-bottom:0.75rem;">Built to the UCT GSB brand template, blue panel with dot pattern, vertical rule, gradient footer strip, and GSB logo lockup in the correct position.</p>
+          <p style="font-size:0.85rem; color:var(--ink); line-height:1.8; margin-bottom:0.75rem;">The Africa map anchors the visual right, reinforcing the golden thread line without text having to do all the work.</p>
+          <p style="font-size:0.85rem; color:var(--ink); line-height:1.8;"><strong style="color:var(--uct-green);">"Where the future is built."</strong>, the headline does what the brief asked: proud, evidence-led, Africa as advantage.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPTIONS -->
+    <div style="display:flex; align-items:center; gap:0.75rem; margin:2rem 0 1rem;">
+      <div style="height:1px; flex:1; background:var(--border);"></div>
+      <span style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap;">Captions written to accompany this graphic</span>
+      <div style="height:1px; flex:1; background:var(--border);"></div>
+    </div>
+
+    <div class="captions-grid">
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          Instagram
+        </div>
+        <p class="caption-text">By 2050, 1 in 4 people under 25 will be African. The MPhil in Inclusive Innovation at UCT GSB is designed for the thinkers who will shape what that means.</p>
+        <p class="caption-hashtags">#InclusiveInnovation #UCTGSB #AfricaRising #Postgraduate</p>
+      </div>
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          Facebook
+        </div>
+        <p class="caption-text">Africa is not the future, it's the present. The UCT GSB MPhil in Inclusive Innovation prepares leaders to build systems, businesses, and solutions that work for everyone. Applications are now open.</p>
+        <p class="caption-hashtags">#UCTGSB #MPhil #InclusiveInnovation #CapeTown</p>
+      </div>
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          LinkedIn
+        </div>
+        <p class="caption-text">The next chapter of global innovation will be written on this continent. UCT GSB's MPhil in Inclusive Innovation develops leaders equipped to author it, with rigour, purpose, and a distinctly African lens. Applications open now.</p>
+        <p class="caption-hashtags">#InclusiveInnovation #UCTGSB #AfricanLeadership #PostgraduateStudy</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- DELIVERABLE 2: PGDip -->
+<div class="section">
+  <p class="section-label">Deliverable Two</p>
+  <h2 class="section-title">PGDip in Development Finance</h2>
+
+  <div class="deliverable">
+    <div class="deliverable-header">
+      <span class="deliverable-tag">Motion Graphic</span>
+      <span class="deliverable-title">21-second video, full bleed hero image, 5 scenes, smooth crossfades</span>
+    </div>
+
+    <!-- REAL VIDEO -->
+    <div style="margin-bottom:1.5rem;">
+      <div style="display:inline-block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem;">Approved motion graphic · 21 seconds · Instagram / Facebook / LinkedIn</div>
+      <video
+        src="devfin_pgdip_final.mp4"
+        controls
+        style="width:100%; display:block; border: 0.5px solid var(--border); background:#000;"
+        poster=""
+        preload="metadata">
+        Your browser does not support the video tag.
+      </video>
+      <p style="font-size:0.78rem; color:var(--muted); margin-top:0.6rem; line-height:1.6;">
+        Full bleed hero image · 5 scenes · Smooth crossfades · UCT GSB brand · Clean logo close
+      </p>
+    </div>
+
+    <!-- PGDip CAPTIONS -->
+    <div style="display:flex; align-items:center; gap:0.75rem; margin:1.5rem 0 1rem;">
+      <div style="height:1px; flex:1; background:var(--border);"></div>
+      <span style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); white-space:nowrap;">Captions written to accompany this video</span>
+      <div style="height:1px; flex:1; background:var(--border);"></div>
+    </div>
+
+    <div class="captions-grid">
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          Instagram
+        </div>
+        <p class="caption-text">Capital that counts. The PGDip in Development Finance at UCT GSB equips you to direct resources where they build the most. Where will yours go?</p>
+        <p class="caption-hashtags">#DevelopmentFinance #UCTGSB #Impact #Finance</p>
+      </div>
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          Facebook
+        </div>
+        <p class="caption-text">Development Finance is about more than money, it's about what money builds. UCT GSB's PGDip in Development Finance prepares you to make capital work for people, not just portfolios. Applications are open.</p>
+        <p class="caption-hashtags">#UCTGSB #PGDip #DevelopmentFinance #Africa</p>
+      </div>
+      <div class="caption-card">
+        <div class="caption-platform">
+          <span class="platform-dot"></span>
+          LinkedIn
+        </div>
+        <p class="caption-text">The most important investment decisions of the next decade will be made on this continent. UCT GSB's PGDip in Development Finance develops the analytical rigour and contextual intelligence to make them well. Now accepting applications.</p>
+        <p class="caption-hashtags">#DevelopmentFinance #UCTGSB #AfricanBusiness #ImpactInvesting</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- TOOLS & PROCESS -->
+<div class="section">
+  <p class="section-label">Tools &amp; Process</p>
+  <h2 class="section-title">How this work was made, and why that matters</h2>
+  <div class="section-body">
+    <p>Every deliverable on this page was produced using AI-directed content production, a modern working method where strategic creative direction is the core skill, and AI tools handle execution at speed.</p>
+    <p>This is not "AI did it." This is a professional creative director briefing a system with precision, the same instincts that took 15 years to develop, now operating at a pace and scale that wasn't previously possible for a single practitioner.</p>
+  </div>
+
+  <!-- AI METHODOLOGY BOX -->
+  <div style="background:var(--uct-light); border-left:3px solid var(--uct-green); padding:2rem; margin:2rem 0;">
+    <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--uct-green); font-weight:700; margin-bottom:1.25rem;">AI-Directed Workflow</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+      <div>
+        <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.5rem;">1. Brand brief ingestion</p>
+        <p style="font-size:0.82rem; color:var(--muted); line-height:1.7;">The UCT GSB brand template (14 template variants across 5 background types, 3 orientations) was read and interpreted. Brand rules, dot patterns, logo placement, gradient footer, vertical rule, were extracted and applied.</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.5rem;">2. Tone brief translation</p>
+        <p style="font-size:0.82rem; color:var(--muted); line-height:1.7;">The tonal brief (proud not boastful, warm not casual, Africa as advantage) was operationalised into copy constraints and applied consistently across 6 platform captions and 2 graphic headlines.</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.5rem;">3. Python-based asset generation</p>
+        <p style="font-size:0.82rem; color:var(--muted); line-height:1.7;">Graphics were produced at exact spec (1080×1080px) using Python image generation, no Canva, no Photoshop. The motion graphic was assembled with Python video tooling: 5 scenes, crossfades, timed to 21 seconds.</p>
+      </div>
+      <div>
+        <p style="font-size:0.78rem; font-weight:700; color:var(--ink); margin-bottom:0.5rem;">4. Human creative direction throughout</p>
+        <p style="font-size:0.82rem; color:var(--muted); line-height:1.7;">Every output was reviewed, refined, and approved against the brief. The AI produced. The creative director decided. That distinction is the skill, and it's not automatable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tools-row">
+    <div class="tool-badge"><span class="tool-icon">✦</span> Claude AI (Anthropic), copy, strategy &amp; direction</div>
+    <div class="tool-badge"><span class="tool-icon">🐍</span> Python, graphic generation at spec</div>
+    <div class="tool-badge"><span class="tool-icon">🎬</span> Python, motion graphic &amp; video assembly</div>
+    <div class="tool-badge"><span class="tool-icon">📐</span> 1080×1080px, platform spec</div>
+    <div class="tool-badge"><span class="tool-icon">⏱</span> 21-second, motion graphic spec</div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- BRAND BRIEF PROOF -->
+<div class="section">
+  <p class="section-label">Brand Brief &amp; Template Reference</p>
+  <h2 class="section-title">Working from the source, not guessing</h2>
+  <div class="section-body">
+    <p>The UCT GSB brand template set (14 variants across gradient, blue panel, white, grey dot, and diagonal line backgrounds) was used as the direct brief for all graphic production. Every design decision, colour, logo placement, dot pattern density, footer gradient, maps back to a specific template rule.</p>
+    <p>This is what separates brand-compliant AI output from generic AI output: the brief quality determines the output quality. Garbage in, garbage out, and the reverse is equally true.</p>
+  </div>
+
+  <!-- PDF EMBED -->
+  <div style="margin-top:1.75rem; border:0.5px solid var(--border); overflow:hidden;">
+    <div style="background:var(--uct-green); padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.2rem;">Brand Reference Document</p>
+        <p style="font-size:0.88rem; font-weight:600; color:#fff;">UCT GSB Template Presentation, 14 approved template variants</p>
+      </div>
+      <a href="UCT_GSB_Template_Presentation_v2.pdf"
+         download
+         style="background:#0088CC; color:#fff; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.5rem 1rem; text-decoration:none; white-space:nowrap; font-weight:600;">
+        Download PDF ↓
+      </a>
+    </div>
+    <iframe
+      src="UCT_GSB_Template_Presentation_v2.pdf"
+      style="width:100%; height:480px; border:none; display:block;"
+      title="UCT GSB Brand Template Presentation">
+      <p style="padding:1.5rem; color:var(--muted); font-size:0.88rem;">
+        Your browser cannot display the PDF inline.
+        <a href="UCT_GSB_Template_Presentation_v2.pdf" style="color:var(--uct-green);">Download it here</a> to view the full brand template reference.
+      </p>
+    </iframe>
+  </div>
+</div>
+
+
+<!-- RESULTS STRIP -->
+<div class="results-strip">
+  <div class="results-inner">
+    <div class="result-item">
+      <div class="result-num">0→1</div>
+      <div class="result-label">Brand guide built from nothing</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">14</div>
+      <div class="result-label">New templates created, none existed before today</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">2</div>
+      <div class="result-label">Campaigns produced, graphics, video, captions</div>
+    </div>
+    <div class="result-item">
+      <div class="result-num">1</div>
+      <div class="result-label">Morning. One person. One AI tool.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- BACK TO PORTFOLIO -->
+<div class="back-strip">
+  <p class="back-strip-text">View more work</p>
+  <a href="index.html#work" class="back-link">← Back to portfolio</a>
+</div>
+
+
+<footer>
+  <span class="footer-text">© 2026 Greer Abrahams</span>
+  <span class="footer-text">Brand & Marketing Communication Specialist · Cape Town</span>
+</footer>
+
+</body>
+</html>

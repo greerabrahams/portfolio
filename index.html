@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black:   #111111;
+      --white:   #FFFFFF;
+      --page:    #F2F2F2;
+      --muted:   #777777;
+      --border:  #E2E2E2;
+      --dark:    #222222;
+      --coral:   #E05A3A;
+      --blush:   #FDF0ED;
+      --navy:    #1B3A5C;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--page); color: var(--black); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--blush); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-brand img { height: 38px; width: auto; display: block; }
+    .nav-brand-name { font-family: var(--serif); font-size: 0.88rem; font-weight: 400; color: var(--black); letter-spacing: 0.2em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem 4rem; }
+    .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .hero-name { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--black); margin-bottom: 0.75rem; letter-spacing: 0.02em; }
+    .hero-headline { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 400; color: var(--black); margin-bottom: 1.75rem; min-height: 1.4em; transition: opacity 0.4s ease; }
+    .hero-headline .accent { color: var(--navy); font-style: italic; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); line-height: 1.85; max-width: 620px; font-weight: 300; margin-bottom: 3rem; }
+    .hero-divider { height: 1px; background: var(--border); margin-bottom: 2.5rem; }
+    .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
+    .hero-stat { padding-right: 2.5rem; margin-right: 2.5rem; border-right: 1px solid var(--border); }
+    .hero-stat:last-child { border-right: none; margin-right: 0; }
+    .hero-stat-num { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: var(--black); line-height: 1; margin-bottom: 0.3rem; }
+    .hero-stat-num span { color: var(--navy); }
+    .hero-stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+    /* SECTIONS */
+    .section-divider { height: 1px; background: #ebebeb; }
+    .section { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .bg-white { background: var(--white); }
+    .bg-page { background: var(--page); }
+    .bg-black { background: var(--black); }
+    .bg-blush { background: var(--blush); }
+
+    .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--muted); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .about-body { font-size: 0.9rem; color: var(--muted); line-height: 1.9; }
+    .block { background: var(--page); padding: 1.5rem; border-left: 2px solid var(--border); margin-bottom: 1rem; }
+    .block:last-child { margin-bottom: 0; }
+    .block-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; font-weight: 500; }
+    .block-text { font-size: 0.87rem; color: var(--dark); line-height: 1.8; }
+
+    /* HOW I WORK */
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 3rem; }
+    .method-cell { padding: 2rem; background: var(--white); }
+    .method-cell.dark { background: var(--black); }
+    .method-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .method-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--black); margin-bottom: 0.6rem; line-height: 1.4; }
+    .method-title.light { color: var(--white); }
+    .method-body { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
+    .method-body.light { color: rgba(255,255,255,0.4); }
+
+    /* EDUCATION & TOOLS */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .col-title { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tag-edu { font-size: 0.78rem; color: var(--dark); border: 1px solid var(--border); padding: 0.4rem 0.85rem; line-height: 1.4; }
+    .tag-tool { font-size: 0.75rem; color: var(--dark); border: 1px solid var(--border); padding: 0.35rem 0.75rem; }
+
+    /* CASE STUDIES */
+    .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2.5rem; }
+    .case-card { background: var(--white); text-decoration: none; display: block; position: relative; overflow: hidden; transition: background 0.2s; }
+    .case-card-header { height: 130px; display: flex; align-items: flex-end; padding: 1.25rem 1.5rem; position: relative; overflow: hidden; }
+    .case-card-watermark { position: absolute; bottom: -12px; right: 10px; font-family: var(--serif); font-size: 5rem; font-weight: 700; line-height: 1; color: rgba(255,255,255,0.18); letter-spacing: -0.02em; white-space: nowrap; pointer-events: none; user-select: none; }
+    .case-card-header-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.4); position: relative; z-index: 1; }
+    .case-card-body { padding: 1.75rem 1.5rem 2rem; }
+    .case-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--navy); transition: width 0.3s; }
+    .case-card:hover { background: #FAFAFA; }
+    .case-card:hover::after { width: 100%; }
+    .case-num { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--navy); opacity: 0.55; line-height: 1; margin-bottom: 1.25rem; }
+    .case-tag { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .case-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--black); line-height: 1.4; margin-bottom: 0.7rem; }
+    .case-body { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
+    .case-arrow { display: inline-block; margin-top: 1.5rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); }
+
+    /* DSM */
+    .dsm-intro { border-left: 2px solid var(--navy); padding: 1.25rem 1.5rem; background: var(--page); margin-bottom: 1px; }
+    .dsm-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--black); margin-bottom: 0.2rem; }
+    .dsm-sub { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 1px; }
+    .cred-card { background: var(--page); padding: 1.5rem; }
+    .cred-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
+    .tag-cert { font-size: 0.71rem; color: var(--navy); border: 1px solid rgba(27,58,92,0.25); padding: 0.28rem 0.65rem; }
+
+    /* WORD CLOUD */
+    #skills-wordcloud { position: relative; width: 100%; height: 220px; margin: 0 0 3rem; }
+    .wc-word { position: absolute; font-family: var(--sans); color: var(--black); cursor: default; transition: color 0.25s, transform 0.25s; white-space: nowrap; user-select: none; }
+    .wc-word:hover { color: var(--coral); transform: scale(1.1); }
+
+    /* CONTACT */
+    .contact-inner { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; line-height: 1.25; color: var(--black); margin-bottom: 2.5rem; }
+    .contact-title em { font-style: italic; color: var(--navy); }
+    .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--muted); text-decoration: none; font-size: 0.84rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .contact-link:hover { color: var(--black); }
+    .contact-link-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); min-width: 64px; }
+    .form-input { background: var(--white); border: 1px solid var(--border); color: var(--black); padding: 0.85rem 1rem; font-size: 0.875rem; font-family: var(--sans); outline: none; width: 100%; transition: border-color 0.2s; display: block; margin-bottom: 0.75rem; }
+    .form-input::placeholder { color: var(--muted); }
+    .form-input:focus { border-color: var(--navy); }
+    .form-textarea { height: 110px; resize: vertical; }
+    .form-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: var(--sans); font-weight: 500; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer { background: var(--blush); border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+
+    .footer-name { font-family: var(--serif); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .footer-right { font-size: 0.7rem; color: var(--muted); }
+    .footer-right a { color: var(--muted); text-decoration: none; }
+    .footer-right a:hover { color: var(--navy); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about-grid, .two-col, .method-grid, .cases-grid, .cred-grid, .contact-inner { grid-template-columns: 1fr; }
+      .hero-stat { border-right: none; padding-right: 0; margin-right: 0; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+      .hero-stat:last-child { border-bottom: none; }
+      nav { padding: 0 1.25rem; }
+      .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .contact-inner { padding: 3.5rem 1.25rem; gap: 3rem; }
+    }
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+      .footer-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-brand">
+    <span class="nav-brand-name">Greer Abrahams</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/gcabrahams/" target="_blank">LinkedIn</a></li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+<div class="bg-blush" id="home">
+  <div class="hero">
+    <p class="hero-eyebrow">Brand &amp; Marketing Communication</p>
+    <h1 class="hero-name">Greer Abrahams</h1>
+    <h2 class="hero-headline" id="hero-headline">I adapt. <span class="accent">You benefit.</span></h2>
+    <p class="hero-tagline">Industry-agnostic by design. My work spans sectors because my core skill is universal: I read the room, decode the language, and deliver high-impact communication that fits the unique context of your business.</p>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">10<span>+</span></div>
+        <div class="hero-stat-label">Years in brand and<br>marketing communication</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>CT</span></div>
+        <div class="hero-stat-label">Cape Town, South Africa<br>Digital Nomad</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span>BA</span></div>
+        <div class="hero-stat-label">Corporate Communication<br>with Distinction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- ABOUT -->
+<div class="bg-page" id="about">
+  <div class="section">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div>
+        <p class="about-body">Backed by a BA in Corporate Communication (Distinction) from The Open University London, I bring a decade of experience translating complex landscapes into results, spanning everything from telecoms, health, and national government to fashion, education, and the arts.</p>
+      </div>
+      <div>
+        <div class="block">
+          <p class="block-label">The Thinking</p>
+          <p class="block-text">Brand strategy, content development, and campaign communication rooted in clear structure and clean writing.</p>
+        </div>
+        <div class="block">
+          <p class="block-label">The Doing</p>
+          <p class="block-text">Crafting the copy, designing creative assets, and implementation. The whole thing, not just the deck.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-cell">
+        <p class="method-label">My Process</p>
+        <h3 class="method-title">Tech-forward from strategy to deployment.</h3>
+        <p class="method-body">I use AI not to cut corners, but to supercharge my output. The strategy changes. The standard doesn't.</p>
+      </div>
+      <div class="method-cell">
+        <p class="method-label">My Stack</p>
+        <h3 class="method-title">Claude &bull; ChatGPT &bull; Gemini &bull; Looklab</h3>
+        <p class="method-body">High technical literacy combined with advanced AI workflows. I don't just hand over static ideas, I generate the code, copy, and creative assets needed to get your campaigns live, fast.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- EDUCATION & TOOLS -->
+<div class="bg-page">
+  <div class="section">
+    <div class="two-col">
+      <div>
+        <p class="section-label">My Education</p>
+        <div class="tags">
+          <span class="tag-edu">BA Corporate Communication with Distinction, The Open University London via Varsity College</span>
+          <span class="tag-edu">Advanced Diploma in Digital Marketing</span>
+          <span class="tag-edu">Social Media Marketing Certificate</span>
+          <span class="tag-edu">Higher Certificate in Business Practice &amp; Principles</span>
+          <span class="tag-edu">N6 Certificate in Financial Management</span>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">My Tools</p>
+        <div class="tags">
+          <span class="tag-tool">WordPress</span>
+          <span class="tag-tool">Google Analytics</span>
+          <span class="tag-tool">Canva</span>
+          <span class="tag-tool">Meta Business Suite</span>
+          <span class="tag-tool">Sprout Social</span>
+          <span class="tag-tool">Hootsuite</span>
+          <span class="tag-tool">Braze</span>
+          <span class="tag-tool">BulkSMS</span>
+          <span class="tag-tool">Qualtrics Social Connect</span>
+          <span class="tag-tool">Meltwater</span>
+          <span class="tag-tool">Brandwatch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- WORK -->
+<div class="bg-page" id="work">
+  <div class="section">
+    <p class="section-label">Selected Work</p>
+    <div class="cases-grid">
+      <a href="case-mweb.html" class="case-card">
+        <div class="case-card-header" style="background: #C8E8E8;">
+          <div class="case-card-watermark" style="color:rgba(0,80,80,0.12);">MWEB</div>
+          <p class="case-card-header-label">Telecoms · Internet Services · Brand</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">MWeb &amp; Webafrica: Building a brand voice in a commoditised market</h3>
+          <p class="case-body">Brand and communication strategy for two of South Africa's leading internet service providers, across a period of significant market change.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">3</p><p style="font-size:0.65rem; color:var(--muted);">Years</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">12</p><p style="font-size:0.65rem; color:var(--muted);">Team members</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">2</p><p style="font-size:0.65rem; color:var(--muted);">System migrations</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+      <a href="case-virgin.html" class="case-card">
+        <div class="case-card-header" style="background: #F5D6D6;">
+          <div class="case-card-watermark">VIRGIN</div>
+          <p class="case-card-header-label">Health &amp; Fitness · Content Strategy</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">Virgin Active: Building a brand voice for the body-positive era</h3>
+          <p class="case-body">Shifting the gym brand's tone from aspiration-through-guilt to genuine human encouragement. Across every channel.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">B2C</p><p style="font-size:0.65rem; color:var(--muted);">Brand voice</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">Multi</p><p style="font-size:0.65rem; color:var(--muted);">Channel</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+      <a href="case-wof.html" class="case-card">
+        <div class="case-card-header" style="background: #FFF3C4;">
+          <div class="case-card-watermark" style="color:rgba(0,0,0,0.1);">WOF</div>
+          <p class="case-card-header-label" style="color:rgba(0,0,0,0.4);">Government · EPWP · Public-Private Partnership</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">Working on Fire: Turning urgency into a movement</h3>
+          <p class="case-body">Communication strategy that transformed a firefighting organisation into a recognisable South African brand with genuine public support.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">8</p><p style="font-size:0.65rem; color:var(--muted);">Provinces</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">500+</p><p style="font-size:0.65rem; color:var(--muted);">Reached</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">ICC</p><p style="font-size:0.65rem; color:var(--muted);">COVID</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+      <a href="case-uct-gsb.html" class="case-card">
+        <div class="case-card-header" style="background: linear-gradient(135deg, #C8D8E8 0%, #D8EEF8 100%);">
+          <div class="case-card-watermark" style="color:rgba(0,0,50,0.1);">GSB</div>
+          <p class="case-card-header-label">Higher Education · Social Media</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">UCT GSB: Brand archaeology and social media campaign</h3>
+          <p class="case-body">No brand guide. No template library. No handover. A complete brand system and two campaigns built from scratch in a single session.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">14</p><p style="font-size:0.65rem; color:var(--muted);">Templates</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">2</p><p style="font-size:0.65rem; color:var(--muted);">Campaigns</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">1</p><p style="font-size:0.65rem; color:var(--muted);">Session</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+      <a href="iso-specialist-case-study.html" class="case-card">
+        <div class="case-card-header" style="background: linear-gradient(135deg, #C8D4E0 0%, #D8E4F0 100%);">
+          <div class="case-card-watermark" style="color:rgba(0,30,70,0.1);">ISO</div>
+          <p class="case-card-header-label">Certification · B2B · Market Entry</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">ISO Specialist: Taking a Dutch certification brand into South Africa</h3>
+          <p class="case-body">A full SA market entry strategy, brand voice adaptation, 30/60/90 day campaign plan, social media content, and a B2B prospecting framework.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">90</p><p style="font-size:0.65rem; color:var(--muted);">Day plan</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">B2B</p><p style="font-size:0.65rem; color:var(--muted);">Strategy</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">SA</p><p style="font-size:0.65rem; color:var(--muted);">Market entry</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+      <a href="case-trust-gap.html" class="case-card">
+        <div class="case-card-header" style="background: #1A1A1A; border-top: 2px solid #C8A96E;">
+          <div class="case-card-watermark" style="color:rgba(200,169,110,0.15); font-size:4rem;">TTG</div>
+          <p class="case-card-header-label" style="color:rgba(200,169,110,0.6);">Brand Strategy · Copy · Positioning</p>
+        </div>
+        <div class="case-card-body">
+          <h3 class="case-title">The Trust Gap: Homepage concept and messaging architecture</h3>
+          <p class="case-body">Brand strategy and full copy for an independent digital consultancy. From positioning insight to every word on the page.</p>
+          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">0</p><p style="font-size:0.65rem; color:var(--muted);">Brief given</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">1</p><p style="font-size:0.65rem; color:var(--muted);">Full concept</p></div>
+            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">WIP</p><p style="font-size:0.65rem; color:var(--muted);">In progress</p></div>
+          </div>
+          <span class="case-arrow">Read case study →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- SKILLS -->
+<div class="bg-page" id="skills">
+  <div class="section">
+    <p class="section-label">What I Bring</p>
+    <div class="dsm-intro">
+      <p class="dsm-name">The Digital School of Marketing, South Africa</p>
+      <p class="dsm-sub">19 accredited module certifications, completed and passed through examination. Individual certificates held for each module.</p>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <p class="cred-label">Brand &amp; Communication</p>
+        <div class="tags">
+          <span class="tag-cert">Brand Contact</span>
+          <span class="tag-cert">Brand Positioning</span>
+          <span class="tag-cert">Marketing Communication Concepts</span>
+          <span class="tag-cert">Writing Advertising Copy</span>
+          <span class="tag-cert">Defining your Audience</span>
+        </div>
+      </div>
+      <div class="cred-card">
+        <p class="cred-label">Content &amp; Digital</p>
+        <div class="tags">
+          <span class="tag-cert">Introduction to Digital Marketing</span>
+          <span class="tag-cert">Digital Marketing Strategy</span>
+          <span class="tag-cert">Content Marketing Strategy</span>
+          <span class="tag-cert">Digital Copywriting</span>
+          <span class="tag-cert">Introduction to WordPress</span>
+        </div>
+      </div>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <p class="cred-label">Social &amp; PR</p>
+        <div class="tags">
+          <span class="tag-cert">Social Media Marketing</span>
+          <span class="tag-cert">Managing a Social Media Community</span>
+          <span class="tag-cert">Online Public Relations</span>
+        </div>
+      </div>
+      <div class="cred-card">
+        <p class="cred-label">Analytics &amp; Performance</p>
+        <div class="tags">
+          <span class="tag-cert">SEO and Analytics</span>
+          <span class="tag-cert">Cookies and Tracking in Analytics</span>
+          <span class="tag-cert">Email Marketing</span>
+          <span class="tag-cert">Mobile Marketing</span>
+          <span class="tag-cert">Paid Advertising</span>
+          <span class="tag-cert">Supervise a Technical Project Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+
+<!-- CONTACT -->
+<div class="bg-blush" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-title">Let's make something <em>worth</em> talking about.</h2>
+      <a href="mailto:greer.alexander@gmail.com" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        greer.alexander@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/gcabrahams/" target="_blank" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        linkedin.com/in/gcabrahams
+      </a>
+    </div>
+    <div>
+      <input class="form-input" type="text" placeholder="Your name" />
+      <input class="form-input" type="email" placeholder="Email address" />
+      <input class="form-input" type="text" placeholder="Subject" />
+      <textarea class="form-input form-textarea" placeholder="Tell me about your project..."></textarea>
+      <button class="form-submit" type="button">Send message</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <span class="footer-name">Greer Abrahams</span>
+  </div>
+  <p class="footer-right">&copy; 2026 &nbsp;&middot;&nbsp; Cape Town &nbsp;&middot;&nbsp; <a href="mailto:greer.alexander@gmail.com">greer.alexander@gmail.com</a></p>
+</footer>
+
+<script>
+(function() {
+  const lines = [
+    'I adapt. <span class="accent">You benefit.</span>',
+    'Same standards. <span class="accent">Every industry.</span>',
+    'Strategy that <span class="accent">fits the room.</span>',
+    'Brand thinking, <span class="accent">AI-powered.</span>',
+    'The whole thing. <span class="accent">Not just the deck.</span>'
+  ];
+  let idx = 0;
+  const el = document.getElementById('hero-headline');
+  if (!el) return;
+  el.style.transition = 'opacity 0.4s ease';
+  setInterval(function() {
+    el.style.opacity = '0';
+    setTimeout(function() {
+      idx = (idx + 1) % lines.length;
+      el.innerHTML = lines[idx];
+      el.style.opacity = '1';
+    }, 400);
+  }, 3200);
+})();
+</script>
+</body>
+</html>
