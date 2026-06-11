@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virgin Active: From disruption to dialogue — Greer Abrahams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black:   #111111;
+      --white:   #FFFFFF;
+      --page:    #F2F2F2;
+      --muted:   #777777;
+      --border:  #E2E2E2;
+      --dark:    #222222;
+      --red:     #C8102E;
+      --blush:   #FDF0ED;
+      --navy:    #1B3A5C;
+      --va-warm: #FAF0F0;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--page); color: var(--black); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--blush); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--navy); }
+    .nav-brand-name { font-family: var(--serif); font-size: 0.88rem; font-weight: 400; color: var(--black); letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* HERO */
+    .case-hero { background: linear-gradient(135deg, #F5D6D6 0%, #FAE8E8 60%, #FDF0ED 100%); padding: 5rem 2.5rem 4rem; }
+    .case-hero-inner { max-width: 900px; margin: 0 auto; }
+    .case-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.45); margin-bottom: 1rem; }
+    .case-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--black); margin-bottom: 1rem; line-height: 1.2; }
+    .case-subtitle { font-size: 1rem; color: rgba(0,0,0,0.55); line-height: 1.85; max-width: 620px; font-weight: 300; margin-bottom: 3rem; }
+    .case-meta { display: flex; gap: 0; flex-wrap: wrap; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; }
+    .case-meta-item { padding-right: 2.5rem; margin-right: 2.5rem; border-right: 1px solid rgba(0,0,0,0.1); }
+    .case-meta-item:last-child { border-right: none; }
+    .case-meta-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.4); margin-bottom: 0.3rem; }
+    .case-meta-value { font-family: var(--serif); font-size: 0.95rem; color: var(--black); }
+
+    /* CONTENT */
+    .section { max-width: 900px; margin: 0 auto; padding: 4.5rem 2.5rem; }
+    .section-divider { height: 1px; background: #ebebeb; }
+    .bg-white { background: var(--white); }
+    .bg-page { background: var(--page); }
+    .bg-blush { background: var(--blush); }
+    .bg-warm { background: var(--va-warm); }
+    .bg-dark { background: #1a1a1a; }
+
+    .section-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--muted); }
+    .section-label.light { color: rgba(255,255,255,0.4); }
+    .section-label.light::before { background: rgba(255,255,255,0.4); }
+
+    .body-text { font-size: 0.92rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.5rem; }
+    .body-text:last-child { margin-bottom: 0; }
+
+    .pull-quote { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 400; color: var(--black); line-height: 1.5; border-left: 3px solid var(--red); padding-left: 1.75rem; margin: 2.5rem 0; }
+
+    /* STATS ROW */
+    .stats-row { display: flex; gap: 0; flex-wrap: wrap; margin: 2rem 0; }
+    .stat-block { padding-right: 2.5rem; margin-right: 2.5rem; border-right: 1px solid var(--border); }
+    .stat-block:last-child { border-right: none; }
+    .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+
+    /* LIFECYCLE */
+    .lifecycle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-top: 2rem; }
+    .lifecycle-phase { background: var(--white); padding: 1.75rem 1.5rem; }
+    .lifecycle-phase.active { background: #2A2A2A; }
+    .phase-tag { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .phase-tag.light { color: rgba(255,255,255,0.4); }
+    .phase-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--black); margin-bottom: 0.6rem; line-height: 1.3; }
+    .phase-name.light { color: var(--white); }
+    .phase-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+    .phase-desc.light { color: rgba(255,255,255,0.55); }
+
+    /* =====================
+       CHANNEL MOCKUPS
+       ===================== */
+
+    /* Shared scene wrapper */
+    .mockup-scene { display: flex; flex-direction: column; }
+    .mockup-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+
+    /* PHONE FRAME — SMS & App Push */
+    .phone-frame { width: 220px; background: #1c1c1e; border-radius: 28px; padding: 16px 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.22); }
+    .phone-notch { width: 60px; height: 8px; background: #333; border-radius: 4px; margin: 0 auto 16px; }
+    .phone-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 4px; }
+    .phone-time { font-size: 0.65rem; color: rgba(255,255,255,0.8); font-weight: 600; }
+    .phone-icons { display: flex; gap: 4px; }
+    .phone-icon-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+
+    /* SMS bubbles inside phone */
+    .sms-thread { padding: 4px 0; }
+    .sms-sender-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+    .sms-avatar { width: 22px; height: 22px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; }
+    .sms-avatar-letter { font-size: 0.55rem; color: white; font-weight: 700; }
+    .sms-sender-name { font-size: 0.62rem; color: rgba(255,255,255,0.5); }
+    .sms-bubble { background: #2c2c2e; color: rgba(255,255,255,0.88); border-radius: 14px 14px 14px 4px; padding: 0.6rem 0.75rem; font-size: 0.68rem; line-height: 1.5; margin-bottom: 4px; }
+    .sms-ts { font-size: 0.55rem; color: rgba(255,255,255,0.28); margin-top: 2px; }
+
+    /* App push notification inside phone */
+    .push-notification { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 12px; }
+    .push-app-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+    .push-app-icon { width: 16px; height: 16px; background: var(--red); border-radius: 4px; }
+    .push-app-name { font-size: 0.6rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+    .push-app-time { font-size: 0.58rem; color: rgba(255,255,255,0.35); margin-left: auto; }
+    .push-title { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 2px; }
+    .push-body { font-size: 0.65rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+
+    /* WHATSAPP MOCKUP */
+    .wa-frame { background: #0b141a; border-radius: 12px; padding: 0; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
+    .wa-header { background: #1f2c34; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+    .wa-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .wa-avatar-text { font-size: 0.65rem; color: white; font-weight: 700; }
+    .wa-contact-name { font-size: 0.78rem; font-weight: 600; color: #e9edef; }
+    .wa-contact-sub { font-size: 0.6rem; color: rgba(255,255,255,0.35); }
+    .wa-body { background: #0b141a; padding: 12px 10px; min-height: 80px; }
+    .wa-msg { background: #1f2c34; border-radius: 0 8px 8px 8px; padding: 8px 10px; display: inline-block; max-width: 90%; margin-bottom: 4px; }
+    .wa-msg-text { font-size: 0.7rem; color: #e9edef; line-height: 1.5; }
+    .wa-msg-time { font-size: 0.58rem; color: rgba(255,255,255,0.3); text-align: right; margin-top: 3px; }
+
+    /* EMAIL MOCKUP */
+    .email-frame { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; }
+    .email-chrome { background: #f0f0f0; padding: 8px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border); }
+    .email-chrome-dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; }
+    .email-chrome-dot.red { background: #ff5f57; }
+    .email-chrome-dot.yellow { background: #febc2e; }
+    .email-chrome-dot.green { background: #28c840; }
+    .email-header { padding: 16px 20px 12px; border-bottom: 1px solid #f0f0f0; }
+    .email-from { font-size: 0.68rem; color: var(--muted); margin-bottom: 2px; }
+    .email-subject { font-size: 0.82rem; font-weight: 600; color: var(--black); }
+    .email-body-preview { padding: 16px 20px; }
+    .email-logo-bar { background: var(--red); height: 4px; margin-bottom: 14px; }
+    .email-salutation { font-size: 0.78rem; color: var(--dark); margin-bottom: 8px; }
+    .email-copy { font-size: 0.73rem; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
+    .email-cta { display: inline-block; background: var(--red); color: white; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px; border-radius: 3px; }
+    .email-footer-strip { background: #f8f8f8; padding: 10px 20px; font-size: 0.62rem; color: #aaa; border-top: 1px solid #f0f0f0; }
+
+    /* WEBSITE BANNER MOCKUP */
+    .website-frame { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .website-chrome { background: #f0f0f0; padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #ddd; }
+    .website-chrome-dots { display: flex; gap: 5px; }
+    .website-chrome-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .website-chrome-dot.r { background: #ff5f57; }
+    .website-chrome-dot.y { background: #febc2e; }
+    .website-chrome-dot.g { background: #28c840; }
+    .website-url-bar { flex: 1; background: white; border-radius: 4px; padding: 3px 8px; font-size: 0.62rem; color: #666; border: 1px solid #ddd; }
+    .website-nav { background: var(--black); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .website-nav-logo { font-family: var(--serif); font-size: 0.78rem; color: white; letter-spacing: 0.1em; }
+    .website-nav-links { display: flex; gap: 12px; }
+    .website-nav-link { font-size: 0.6rem; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; }
+    .website-alert-banner { background: #fff3cd; border-left: 3px solid #f0a500; padding: 10px 16px; display: flex; align-items: flex-start; gap: 8px; }
+    .website-alert-icon { width: 14px; height: 14px; background: #f0a500; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; }
+    .website-alert-icon-text { font-size: 0.5rem; color: white; font-weight: 700; }
+    .website-alert-title { font-size: 0.72rem; font-weight: 600; color: #7d5a00; margin-bottom: 2px; }
+    .website-alert-body { font-size: 0.65rem; color: #a07800; line-height: 1.45; }
+    .website-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 20px 16px; }
+    .website-hero-label { font-size: 0.58rem; color: rgba(255,255,255,0.4); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+    .website-hero-title { font-family: var(--serif); font-size: 1rem; color: white; margin-bottom: 8px; line-height: 1.3; }
+    .website-hero-body { font-size: 0.65rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    .website-letter { padding: 20px 24px; background: white; }
+    .website-letter-date { font-size: 0.6rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.04em; }
+    .website-letter-title { font-family: var(--serif); font-size: 1rem; color: var(--black); margin-bottom: 14px; }
+    .website-letter-body { font-size: 0.72rem; color: #444; line-height: 1.7; margin-bottom: 10px; }
+    .website-letter-sub { font-size: 0.65rem; font-weight: 500; color: var(--black); margin-top: 14px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .website-letter-actions { display: flex; flex-direction: column; gap: 6px; }
+    .website-letter-link { font-size: 0.68rem; color: var(--red); text-decoration: underline; cursor: pointer; }
+
+    /* MOCKUP GRID */
+    .channel-mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; align-items: start; }
+    .channel-mockup-row { display: flex; gap: 2rem; align-items: flex-start; margin-top: 2.5rem; flex-wrap: wrap; }
+    .channel-mockup-item { flex: 1; min-width: 200px; }
+
+    /* DELIVERABLES LIST */
+    .deliverables-list { list-style: none; margin-top: 1.5rem; }
+    .deliverables-list li { font-size: 0.88rem; color: var(--dark); padding: 0.7rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.75rem; }
+    .deliverables-list li:last-child { border-bottom: none; }
+    .deliverables-list li::before { content: '—'; color: var(--red); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* TOOLS ROW */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 1px; background: var(--border); margin-top: 2rem; }
+    .tool-chip { background: var(--white); padding: 1rem 1.4rem; flex: 1; min-width: 120px; }
+    .tool-name { font-size: 0.75rem; font-weight: 500; color: var(--black); margin-bottom: 0.2rem; }
+    .tool-use { font-size: 0.7rem; color: var(--muted); line-height: 1.5; }
+
+    /* SEGMENTATION CALLOUT */
+    .callout-block { border-left: 3px solid var(--red); padding: 1.75rem 2rem; background: var(--white); margin-top: 2rem; }
+    .callout-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .callout-title { font-family: var(--serif); font-size: 1.05rem; color: var(--black); margin-bottom: 0.6rem; line-height: 1.4; }
+    .callout-body { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
+
+    /* CLUB TIER TABLE */
+    .tier-table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 0.84rem; }
+    .tier-table th { text-align: left; font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+    .tier-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); vertical-align: top; font-size: 0.84rem; }
+    .tier-table tr:last-child td { border-bottom: none; }
+    .tier-badge { display: inline-block; font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500; }
+    .tier-club { background: #f0f4f8; color: #1B3A5C; }
+    .tier-premier { background: #fff3f3; color: #C8102E; }
+    .tier-collection { background: #1a1a1a; color: #ffffff; }
+
+    /* OPERATIONAL COMMS */
+    .op-comms-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2rem; }
+    .op-comms-card { background: var(--white); padding: 1.5rem 1.75rem; }
+    .op-comms-title { font-size: 0.78rem; font-weight: 500; color: var(--black); margin-bottom: 0.4rem; letter-spacing: 0.02em; }
+    .op-comms-body { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+
+    /* DEMONSTRATES */
+    .demonstrates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 2rem; }
+    .demonstrates-card { background: var(--white); padding: 2rem 1.75rem; }
+    .dem-num { font-family: var(--serif); font-size: 2.5rem; color: var(--red); opacity: 0.2; line-height: 1; margin-bottom: 0.75rem; }
+    .dem-title { font-size: 0.85rem; font-weight: 500; color: var(--black); margin-bottom: 0.5rem; }
+    .dem-body { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+
+    /* CASE NAV */
+    .case-nav { max-width: 900px; margin: 0 auto; padding: 2.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .case-nav-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .case-nav-link:hover { color: var(--navy); }
+
+    /* FOOTER */
+    footer { background: var(--blush); border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: var(--serif); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .footer-right { font-size: 0.7rem; color: var(--muted); }
+    .footer-right a { color: var(--muted); text-decoration: none; }
+    .footer-right a:hover { color: var(--navy); }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .lifecycle { grid-template-columns: 1fr 1fr; }
+      .channel-mockup-grid { grid-template-columns: 1fr; }
+      .demonstrates-grid { grid-template-columns: 1fr; }
+      .op-comms-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.25rem; }
+      .section { padding: 3rem 1.25rem; }
+      .case-hero { padding: 3rem 1.25rem 2.5rem; }
+      .case-nav { padding: 2rem 1.25rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-back">← Back to portfolio</a>
+  <span class="nav-brand-name">Greer Abrahams</span>
+</nav>
+
+<!-- HERO -->
+<div class="case-hero">
+  <div class="case-hero-inner">
+    <p class="case-eyebrow">Health &amp; Fitness · CX Communication Specialist · Project Management</p>
+    <h1 class="case-title">Virgin Active: From disruption to dialogue</h1>
+    <p class="case-subtitle">Virgin Active South Africa was refurbishing gyms into health and wellness centres. Someone had to make sure the members knew about it, were ready for it, and didn't cancel because of it. That was me.</p>
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-label">Role</p>
+        <p class="case-meta-value">CX Communication Specialist</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-label">Organisation</p>
+        <p class="case-meta-value">Virgin Active South Africa</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-label">Club Types</p>
+        <p class="case-meta-value">Club · Premier · Collection</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-label">Channels</p>
+        <p class="case-meta-value">SMS · WhatsApp · Email · App · Web</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- THE SITUATION -->
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">The Situation</p>
+    <div class="two-col">
+      <div>
+        <p class="body-text">Virgin Active South Africa was refurbishing clubs across the network, turning gyms into full health and wellness destinations. For members, that meant construction, closed facilities, disrupted routines, and access changes, often with very little notice.</p>
+        <p class="body-text">For paying members this wasn't a minor inconvenience. It was a direct hit on a service they'd committed to. The risk was real: frustration, cancellations, reputational damage. What the programme needed was one person at the intersection of operations, project management, and member communication. Someone who made sure nothing fell through the gap.</p>
+      </div>
+      <div>
+        <div class="pull-quote">The refurbishment changed the gym. The communication determined whether members stuck around for it.</div>
+        <div class="stats-row">
+          <div class="stat-block">
+            <p class="stat-num">5</p>
+            <p class="stat-label">Channels:<br>SMS, WhatsApp,<br>Email, App, Web</p>
+          </div>
+          <div class="stat-block">
+            <p class="stat-num">3</p>
+            <p class="stat-label">Distinct<br>audiences</p>
+          </div>
+          <div class="stat-block">
+            <p class="stat-num">360°</p>
+            <p class="stat-label">Internal and external<br>comms managed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- FOUR COMMS TYPES -->
+<div class="bg-page">
+  <div class="section">
+    <p class="section-label">Types of Communication</p>
+    <p class="body-text" style="max-width: 620px;">The work spanned four distinct types of communication, each with its own audience, urgency, and tone requirements. Change management wasn't a separate workstream. It ran through all four.</p>
+    <div class="lifecycle">
+      <div class="lifecycle-phase">
+        <p class="phase-tag">01</p>
+        <p class="phase-name">Project Communications</p>
+        <p class="phase-desc">Translated Scope of Works and construction plans into member-facing communication plans. Coordinated with project managers, coordinators, and club management to keep all stakeholders aligned from refurbishment start to reopening.</p>
+      </div>
+      <div class="lifecycle-phase active">
+        <p class="phase-tag light">02</p>
+        <p class="phase-name light">Emergency Communications</p>
+        <p class="phase-desc light">Unplanned closures, last-minute facility changes, urgent member notices. Written fast, sent faster. If a facility closes at 6am, the member at the door at 5:45 needed to know yesterday.</p>
+      </div>
+      <div class="lifecycle-phase">
+        <p class="phase-tag">03</p>
+        <p class="phase-name">Operational Communications</p>
+        <p class="phase-desc">The consistent, ongoing layer of member communication: new joiner welcomes, billing reminders, payment notices, membership provision updates. Routine by nature, but critical to retention.</p>
+      </div>
+      <div class="lifecycle-phase">
+        <p class="phase-tag">04</p>
+        <p class="phase-name">Campaign Communications</p>
+        <p class="phase-desc">Full communication plans for member-facing campaigns: new yoga classes, exclusive Premier events, special class launches. Copy, scripts, timelines, and cross-functional coordination from brief to send.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- CHANNELS IN SITU -->
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">The Channels</p>
+    <p class="body-text" style="max-width: 620px;">Five channels. Each with its own format constraints, audience expectations, and copy requirements. The same message, written five different ways, timed to work together, not compete.</p>
+
+    <!-- ROW 1: SMS + App Push -->
+    <div class="channel-mockup-grid" style="margin-top: 2.5rem; align-items: start;">
+      <div class="mockup-scene">
+        <p class="mockup-label">SMS: Disruption Notice</p>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-status">
+            <span class="phone-time">09:14</span>
+            <div class="phone-icons">
+              <div class="phone-icon-dot"></div>
+              <div class="phone-icon-dot"></div>
+              <div class="phone-icon-dot"></div>
+            </div>
+          </div>
+          <div class="sms-thread">
+            <div class="sms-sender-row">
+              <div class="sms-avatar"><span class="sms-avatar-letter">VA</span></div>
+              <span class="sms-sender-name">Virgin Active</span>
+            </div>
+            <div class="sms-bubble">Hi Sarah, our Claremont pool closes 14 Jan for refurbishment. Your membership is active at Pinelands &amp; Cavendish in the meantime. We'll update you when we reopen.</div>
+            <div class="sms-ts">09:14 · Delivered</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-scene">
+        <p class="mockup-label">App Push Notification: Event Invite</p>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-status">
+            <span class="phone-time">07:32</span>
+            <div class="phone-icons">
+              <div class="phone-icon-dot"></div>
+              <div class="phone-icon-dot"></div>
+              <div class="phone-icon-dot"></div>
+            </div>
+          </div>
+          <div style="margin-top: 8px;">
+            <div class="push-notification">
+              <div class="push-app-row">
+                <div class="push-app-icon"></div>
+                <span class="push-app-name">Virgin Active</span>
+                <span class="push-app-time">now</span>
+              </div>
+              <p class="push-title">New: Premier Yoga, Claremont</p>
+              <p class="push-body">Our new yoga studio opens Monday. Premier members get first access. Tap to book your spot.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: WhatsApp + Email -->
+    <div class="channel-mockup-grid" style="margin-top: 3rem;">
+      <div class="mockup-scene">
+        <p class="mockup-label">WhatsApp: Membership Provision Update</p>
+        <div class="wa-frame">
+          <div class="wa-header">
+            <div class="wa-avatar"><span class="wa-avatar-text">VA</span></div>
+            <div>
+              <p class="wa-contact-name">Virgin Active</p>
+              <p class="wa-contact-sub">Official Club Updates</p>
+            </div>
+          </div>
+          <div class="wa-body">
+            <div class="wa-msg">
+              <p class="wa-msg-text">Hi Mark, a quick update: Century City is back open as of Monday 20 Jan. Your home club access is restored and your Milnerton provision has been removed. Thanks for your patience during the refurb. It's looking great. See you soon.</p>
+              <p class="wa-msg-time">10:05 &#10003;&#10003;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-scene">
+        <p class="mockup-label">Email: New Joiner Welcome</p>
+        <div class="email-frame">
+          <div class="email-chrome">
+            <div class="email-chrome-dot red"></div>
+            <div class="email-chrome-dot yellow"></div>
+            <div class="email-chrome-dot green"></div>
+          </div>
+          <div class="email-header">
+            <p class="email-from">From: Virgin Active &lt;no-reply@virginactive.co.za&gt;</p>
+            <p class="email-subject">Welcome to Virgin Active, Sarah.</p>
+          </div>
+          <div class="email-body-preview">
+            <div class="email-logo-bar"></div>
+            <p class="email-salutation">Hi Sarah,</p>
+            <p class="email-copy">Welcome to the club. Literally. Your membership is now active and your home club is Claremont. Here's everything you need to get started, including class schedules, app setup, and how to book a session with a trainer.</p>
+            <span class="email-cta">Explore Your Club</span>
+          </div>
+          <div class="email-footer-strip">Virgin Active South Africa · Unsubscribe · Privacy Policy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: Website full width -->
+    <div style="margin-top: 3rem;">
+      <p class="mockup-label">Website -- Member Letter Page</p>
+      <div class="website-frame">
+        <div class="website-chrome">
+          <div class="website-chrome-dots">
+            <div class="website-chrome-dot r"></div>
+            <div class="website-chrome-dot y"></div>
+            <div class="website-chrome-dot g"></div>
+          </div>
+          <div class="website-url-bar">virginactive.co.za/updates/claremont-refurbishment</div>
+        </div>
+        <div class="website-nav">
+          <span class="website-nav-logo">Virgin Active</span>
+          <div class="website-nav-links">
+            <span class="website-nav-link">Clubs</span>
+            <span class="website-nav-link">Classes</span>
+            <span class="website-nav-link">Updates</span>
+          </div>
+        </div>
+        <div class="website-letter">
+          <p class="website-letter-date">14 January 2025</p>
+          <p class="website-letter-title">A note to our Claremont members</p>
+          <p class="website-letter-body">We want to be upfront about what is happening at your club over the coming weeks, what it means for your membership, and what we have arranged to make sure your routine stays intact.</p>
+          <p class="website-letter-body">From 20 January, our pool and main gym floor will be closed for refurbishment as we transform Claremont into a full health and wellness centre. We have made arrangements for your membership to be active at Pinelands and Cavendish Square at no extra cost during this time.</p>
+          <p class="website-letter-sub">Manage your preferences during this period:</p>
+          <div class="website-letter-actions">
+            <span class="website-letter-link">Activate guest club access</span>
+            <span class="website-letter-link">Update my notification preferences</span>
+            <span class="website-letter-link">Contact us</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- THREE AUDIENCES -->
+<div class="bg-page">
+  <div class="section">
+    <p class="section-label">Three Audiences. One Club Network.</p>
+    <p class="body-text" style="max-width: 620px;">No club member is the same, and the communication reflected that. Three distinct audiences, each with different expectations, preferences, and relationship with the brand. The standard of service was the same across all three. What changed was the tone, the framing, and how we spoke to each group.</p>
+    <table class="tier-table">
+      <thead>
+        <tr>
+          <th>Club Type</th>
+          <th>Member Profile</th>
+          <th>Communication Approach</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tier-badge tier-club">Club</span></td>
+          <td>Broad membership base; value-conscious; routine-driven</td>
+          <td>Clear, practical, action-oriented. Strong emphasis on alternative access arrangements and minimising impact on daily routine.</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-premier">Premier</span></td>
+          <td>Health-conscious; experience-led; higher service expectations</td>
+          <td>Elevated tone. Refurbishment framed as an investment in their experience, not just a disruption to endure.</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge tier-collection">Collection</span></td>
+          <td>Premium clubs; long-standing, loyalty-sensitive members</td>
+          <td>Highest level of care applied at every touchpoint. Every friction point anticipated and addressed before it reached the member.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- SEGMENTATION AND BI - OWN SECTION -->
+<div class="bg-white">
+  <div class="section">
+    <p class="section-label">Audience Segmentation &amp; BI Collaboration</p>
+    <div class="two-col">
+      <div>
+        <p class="body-text">A well-written message sent to the wrong list is a worse outcome than no message at all. Before any communication went out, the audience had to be right.</p>
+        <p class="body-text">I worked closely with the Business Intelligence team to ensure member lists were correctly pulled, structured, and verified in Excel before entering the send pipeline. Lists were segmented by club, tier, membership status, and geography, signed off before anything moved.</p>
+        <p class="body-text">This is where technical rigour and communication precision meet. It's unglamorous work. It's also where the most costly errors happen, and where getting it right makes everything else downstream credible.</p>
+      </div>
+      <div>
+        <div class="callout-block" style="margin-top: 0;">
+          <p class="callout-label">Why this matters</p>
+          <p class="callout-title">Segmentation is not an afterthought</p>
+          <p class="callout-body">Member data across multiple club types and membership categories, each with different communication needs, different entitlements, and different sensitivities. Getting the list wrong means the wrong member gets a closure notice for a club they don't belong to, or a payment reminder with the wrong billing date. The BI collaboration was not support work. It was part of the communication function.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- PROJECT MANAGEMENT -->
+<div class="bg-page">
+  <div class="section">
+    <p class="section-label">Project Management</p>
+    <p class="body-text" style="max-width: 620px;">Multiple projects, multiple clubs, multiple channels, multiple stakeholders, running simultaneously. Good communication work requires an equally good system behind it.</p>
+    <div class="tools-row">
+      <div class="tool-chip">
+        <p class="tool-name">Smartsheet</p>
+        <p class="tool-use">Project tracking and communication timelines</p>
+      </div>
+      <div class="tool-chip">
+        <p class="tool-name">Asana</p>
+        <p class="tool-use">Task and campaign management</p>
+      </div>
+      <div class="tool-chip">
+        <p class="tool-name">Microsoft Copilot</p>
+        <p class="tool-use">Drafting, editing, internal documentation</p>
+      </div>
+      <div class="tool-chip">
+        <p class="tool-name">Google Docs</p>
+        <p class="tool-use">Collaborative copy and communication plans</p>
+      </div>
+      <div class="tool-chip">
+        <p class="tool-name">Freshdesk</p>
+        <p class="tool-use">CX tracking and member ticketing</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- WHAT THIS DEMONSTRATES -->
+<div class="bg-blush">
+  <div class="section">
+    <p class="section-label">What This Demonstrates</p>
+    <div class="demonstrates-grid">
+      <div class="demonstrates-card">
+        <div class="dem-num">01</div>
+        <p class="dem-title">Four types of communication, managed simultaneously</p>
+        <p class="dem-body">Project, emergency, operational, and campaign communications, each with different urgency, tone, and audience requirements, running in parallel across multiple clubs and geographies.</p>
+      </div>
+      <div class="demonstrates-card">
+        <div class="dem-num">02</div>
+        <p class="dem-title">Precision writing across five channels</p>
+        <p class="dem-body">SMS, WhatsApp, email, app notifications, and website, each with its own format constraints. The same message, rewritten for each channel, every time.</p>
+      </div>
+      <div class="demonstrates-card">
+        <div class="dem-num">03</div>
+        <p class="dem-title">Audience segmentation and BI collaboration</p>
+        <p class="dem-body">Working closely with Business Intelligence to ensure member lists were correctly segmented in Excel before any send: by club, tier, membership status, and geography. Technical rigour as part of the communication process.</p>
+      </div>
+      <div class="demonstrates-card">
+        <div class="dem-num">04</div>
+        <p class="dem-title">Translating operations into member communication</p>
+        <p class="dem-body">Turning Scope of Works documents, construction timelines, and project updates into clear, timed, audience-appropriate messages. The bridge between operations and members.</p>
+      </div>
+      <div class="demonstrates-card">
+        <div class="dem-num">05</div>
+        <p class="dem-title">Communication as change management</p>
+        <p class="dem-body">Bringing long-standing, loyal members through sustained disruption without losing them, using tone, timing, and channel choice to maintain the brand relationship throughout.</p>
+      </div>
+      <div class="demonstrates-card">
+        <div class="dem-num">06</div>
+        <p class="dem-title">Full-cycle CX ownership</p>
+        <p class="dem-body">From pre-refurbishment communication planning through to post-opening member surveys, owning the communication function across the entire customer experience arc, not just the visible moments.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE NAV -->
+<div class="bg-page">
+  <div class="case-nav">
+    <a href="index.html" class="case-nav-link">← Back to all work</a>
+    <a href="case-mweb.html" class="case-nav-link">Next: MWeb &amp; Webafrica →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Greer Abrahams</span>
+  <p class="footer-right">&copy; 2026 &nbsp;&middot;&nbsp; Cape Town &nbsp;&middot;&nbsp; <a href="mailto:greer.alexander@gmail.com">greer.alexander@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
