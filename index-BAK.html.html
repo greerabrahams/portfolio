@@ -21,7 +21,7 @@
       --serif:   'Playfair Display', Georgia, serif;
       --sans:    'Inter', system-ui, sans-serif;
     }
-    body { font-family: var(--sans); background: var(--page); color: var(--black); line-height: 1.6; }
+    body { font-family: var(--sans); background: var(--page); color: var(--black); line-height: 1.7; }
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 100; background: var(--blush); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
@@ -38,14 +38,14 @@
     .hero-name { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 400; color: var(--black); margin-bottom: 0.75rem; letter-spacing: 0.02em; }
     .hero-headline { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 400; color: var(--black); margin-bottom: 1.75rem; min-height: 1.4em; transition: opacity 0.4s ease; }
     .hero-headline .accent { color: var(--navy); font-style: italic; }
-    .hero-tagline { font-size: 1rem; color: var(--muted); line-height: 1.85; max-width: 620px; font-weight: 300; margin-bottom: 3rem; }
+    .hero-tagline { font-size: 1.05rem; color: var(--muted); line-height: 2; max-width: 620px; font-weight: 300; margin-bottom: 3rem; }
     .hero-divider { height: 1px; background: var(--border); margin-bottom: 2.5rem; }
     .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
     .hero-stat { padding-right: 2.5rem; margin-right: 2.5rem; border-right: 1px solid var(--border); }
     .hero-stat:last-child { border-right: none; margin-right: 0; }
     .hero-stat-num { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: var(--black); line-height: 1; margin-bottom: 0.3rem; }
     .hero-stat-num span { color: var(--navy); }
-    .hero-stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.5; }
+    .hero-stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
 
     /* SECTIONS */
     .section-divider { height: 1px; background: #ebebeb; }
@@ -60,11 +60,11 @@
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
-    .about-body { font-size: 0.9rem; color: var(--muted); line-height: 1.9; }
+    .about-body { font-size: 0.96rem; color: var(--muted); line-height: 2; }
     .block { background: var(--page); padding: 1.5rem; border-left: 2px solid var(--border); margin-bottom: 1rem; }
     .block:last-child { margin-bottom: 0; }
     .block-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; font-weight: 500; }
-    .block-text { font-size: 0.87rem; color: var(--dark); line-height: 1.8; }
+    .block-text { font-size: 0.93rem; color: var(--dark); line-height: 1.85; }
 
     /* HOW I WORK */
     .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 3rem; }
@@ -73,7 +73,7 @@
     .method-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
     .method-title { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--black); margin-bottom: 0.6rem; line-height: 1.4; }
     .method-title.light { color: var(--white); }
-    .method-body { font-size: 0.84rem; color: var(--muted); line-height: 1.8; }
+    .method-body { font-size: 0.9rem; color: var(--muted); line-height: 1.85; }
     .method-body.light { color: rgba(255,255,255,0.4); }
 
     /* EDUCATION & TOOLS */
@@ -96,31 +96,32 @@
     .case-num { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--navy); opacity: 0.55; line-height: 1; margin-bottom: 1.25rem; }
     .case-tag { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
     .case-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--black); line-height: 1.4; margin-bottom: 0.7rem; }
-    .case-body { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
+    .case-body { font-size: 0.88rem; color: var(--muted); line-height: 1.85; }
     .case-arrow { display: inline-block; margin-top: 1.5rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); }
+    .case-card--full { grid-column: 1 / -1; }
 
-    /* DSM */
-    .dsm-intro { border-left: 2px solid var(--navy); padding: 1.25rem 1.5rem; background: var(--page); margin-bottom: 1px; }
-    .dsm-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--black); margin-bottom: 0.2rem; }
-    .dsm-sub { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    /* CREDENTIALS */
+    .cred-anchor { border-left: 3px solid var(--navy); padding: 1.5rem 1.75rem; background: var(--white); margin-bottom: 1px; }
+    .cred-anchor-degree { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--black); margin-bottom: 0.25rem; line-height: 1.4; }
+    .cred-anchor-inst { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; }
+    .cred-anchor-badge { display: inline-block; margin-top: 0.65rem; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); border: 1px solid rgba(27,58,92,0.3); padding: 0.25rem 0.65rem; }
+
     .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 1px; }
-    .cred-card { background: var(--page); padding: 1.5rem; }
-    .cred-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
-    .tag-cert { font-size: 0.71rem; color: var(--navy); border: 1px solid rgba(27,58,92,0.25); padding: 0.28rem 0.65rem; }
-
-    /* WORD CLOUD */
-    #skills-wordcloud { position: relative; width: 100%; height: 220px; margin: 0 0 3rem; }
-    .wc-word { position: absolute; font-family: var(--sans); color: var(--black); cursor: default; transition: color 0.25s, transform 0.25s; white-space: nowrap; user-select: none; }
-    .wc-word:hover { color: var(--coral); transform: scale(1.1); }
+    .cred-card { background: var(--page); padding: 1.75rem; }
+    .cred-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .cred-capability { margin-bottom: 1.1rem; }
+    .cred-capability:last-child { margin-bottom: 0; }
+    .cred-cap-title { font-size: 0.9rem; color: var(--black); font-weight: 500; margin-bottom: 0.25rem; line-height: 1.4; }
+    .cred-cap-body { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
 
     /* CONTACT */
     .contact-inner { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .contact-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; line-height: 1.25; color: var(--black); margin-bottom: 2.5rem; }
     .contact-title em { font-style: italic; color: var(--navy); }
-    .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--muted); text-decoration: none; font-size: 0.84rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--muted); text-decoration: none; font-size: 0.88rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
     .contact-link:hover { color: var(--black); }
     .contact-link-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); min-width: 64px; }
-    .form-input { background: var(--white); border: 1px solid var(--border); color: var(--black); padding: 0.85rem 1rem; font-size: 0.875rem; font-family: var(--sans); outline: none; width: 100%; transition: border-color 0.2s; display: block; margin-bottom: 0.75rem; }
+    .form-input { background: var(--white); border: 1px solid var(--border); color: var(--black); padding: 0.85rem 1rem; font-size: 0.9rem; font-family: var(--sans); outline: none; width: 100%; transition: border-color 0.2s; display: block; margin-bottom: 0.75rem; }
     .form-input::placeholder { color: var(--muted); }
     .form-input:focus { border-color: var(--navy); }
     .form-textarea { height: 110px; resize: vertical; }
@@ -130,7 +131,6 @@
     /* FOOTER */
     footer { background: var(--blush); border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
     .footer-brand { display: flex; align-items: center; gap: 12px; }
-
     .footer-name { font-family: var(--serif); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
     .footer-right { font-size: 0.7rem; color: var(--muted); }
     .footer-right a { color: var(--muted); text-decoration: none; }
@@ -161,7 +161,7 @@
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#skills">Credentials</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://www.linkedin.com/in/gcabrahams/" target="_blank">LinkedIn</a></li>
   </ul>
@@ -171,10 +171,11 @@
 <!-- HERO -->
 <div class="bg-blush" id="home">
   <div class="hero">
-    <p class="hero-eyebrow">Brand &amp; Marketing Communication</p>
+    <p class="hero-eyebrow">Brand, Marketing &amp; Communication Specialist</p>
     <h1 class="hero-name">Greer Abrahams</h1>
     <h2 class="hero-headline" id="hero-headline">I adapt. <span class="accent">You benefit.</span></h2>
-    <p class="hero-tagline">Industry-agnostic by design. My work spans sectors because my core skill is universal: I read the room, decode the language, and deliver high-impact communication that fits the unique context of your business.</p>
+    <p class="hero-tagline">A decade of high-stakes brand and communication strategy, now amplified by AI. I work across industries because the core discipline is universal: understand the business, decode the audience, then build communication systems that actually perform.</p>
+    <p class="hero-tagline" style="margin-top:-1.75rem; font-size:0.82rem; letter-spacing:0.06em;">Cape Town, South Africa / Available Remotely</p>
     <div class="hero-divider"></div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -183,7 +184,7 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num"><span>CT</span></div>
-        <div class="hero-stat-label">Cape Town, South Africa<br>Digital Nomad</div>
+        <div class="hero-stat-label">Cape Town, South Africa<br>Available remotely</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num"><span>BA</span></div>
@@ -202,30 +203,35 @@
     <p class="section-label">About</p>
     <div class="about-grid">
       <div>
-        <p class="about-body">Backed by a BA in Corporate Communication (Distinction) from The Open University London, I bring a decade of experience translating complex landscapes into results, spanning everything from telecoms, health, and national government to fashion, education, and the arts.</p>
+        <p class="about-body">I hold a BA in Corporate Communication with Distinction from The Open University London. Over a decade, that academic foundation has been deployed across telecoms, national government, health, fitness, education, and the arts. The sector changes. The rigour does not.</p>
+        <p class="about-body" style="margin-top:1.25rem;">Today, I apply that same rigour using AI as a production accelerator. Not as a shortcut to thinking, but as a precision instrument that lets me move from strategy to execution-ready output without losing quality in the gap between the two.</p>
       </div>
       <div>
         <div class="block">
           <p class="block-label">The Thinking</p>
-          <p class="block-text">Brand strategy, content development, and campaign communication rooted in clear structure and clean writing.</p>
+          <p class="block-text">Brand positioning, communication architecture, and audience strategy built on structure. The kind that holds up under pressure.</p>
         </div>
         <div class="block">
           <p class="block-label">The Doing</p>
-          <p class="block-text">Crafting the copy, designing creative assets, and implementation. The whole thing, not just the deck.</p>
+          <p class="block-text">I don't hand over a strategy deck and disappear. Copy, campaign frameworks, and cross-platform implementation. I own the entire execution.</p>
+        </div>
+        <div class="block">
+          <p class="block-label">The Approach</p>
+          <p class="block-text">Strategic clarity first. AI-accelerated execution second. The thinking drives the tool, never the other way around.</p>
         </div>
       </div>
     </div>
 
     <div class="method-grid">
       <div class="method-cell">
-        <p class="method-label">My Process</p>
-        <h3 class="method-title">Tech-forward from strategy to deployment.</h3>
-        <p class="method-body">I use AI not to cut corners, but to supercharge my output. The strategy changes. The standard doesn't.</p>
+        <p class="method-label">Digital Orchestration &amp; Scale</p>
+        <h3 class="method-title">Advanced AI orchestration applied to brand, copy, and creative production.</h3>
+        <p class="method-body">I design the systems, direct the outputs, and ensure executive-level quality at scale.</p>
       </div>
       <div class="method-cell">
-        <p class="method-label">My Stack</p>
-        <h3 class="method-title">Claude &bull; ChatGPT &bull; Gemini &bull; Looklab</h3>
-        <p class="method-body">High technical literacy combined with advanced AI workflows. I don't just hand over static ideas, I generate the code, copy, and creative assets needed to get your campaigns live, fast.</p>
+        <p class="method-label">My Capability</p>
+        <h3 class="method-title">Prompt Architecture &bull; Content Scaling &bull; Visual Conceptualisation</h3>
+        <p class="method-body">Designing structured, repeatable prompt frameworks that produce consistent, brand-aligned outputs. AI-directed production of high-volume messaging and branded assets directly from a strategic brief.</p>
       </div>
     </div>
   </div>
@@ -239,29 +245,24 @@
   <div class="section">
     <div class="two-col">
       <div>
-        <p class="section-label">My Education</p>
+        <p class="section-label">Academic Foundation</p>
         <div class="tags">
-          <span class="tag-edu">BA Corporate Communication with Distinction, The Open University London via Varsity College</span>
+          <span class="tag-edu">BA Corporate Communication with Distinction &mdash; The Open University London via Varsity College</span>
           <span class="tag-edu">Advanced Diploma in Digital Marketing</span>
-          <span class="tag-edu">Social Media Marketing Certificate</span>
-          <span class="tag-edu">Higher Certificate in Business Practice &amp; Principles</span>
-          <span class="tag-edu">N6 Certificate in Financial Management</span>
         </div>
       </div>
       <div>
-        <p class="section-label">My Tools</p>
+        <p class="section-label">Platform Expertise</p>
         <div class="tags">
-          <span class="tag-tool">WordPress</span>
-          <span class="tag-tool">Google Analytics</span>
-          <span class="tag-tool">Canva</span>
           <span class="tag-tool">Meta Business Suite</span>
+          <span class="tag-tool">Google Analytics</span>
           <span class="tag-tool">Sprout Social</span>
-          <span class="tag-tool">Hootsuite</span>
-          <span class="tag-tool">Braze</span>
-          <span class="tag-tool">BulkSMS</span>
-          <span class="tag-tool">Qualtrics Social Connect</span>
           <span class="tag-tool">Meltwater</span>
           <span class="tag-tool">Brandwatch</span>
+          <span class="tag-tool">Braze</span>
+          <span class="tag-tool">Qualtrics Social Connect</span>
+          <span class="tag-tool">Canva</span>
+          <span class="tag-tool">WordPress</span>
         </div>
       </div>
     </div>
@@ -279,98 +280,83 @@
       <a href="case-mweb.html" class="case-card">
         <div class="case-card-header" style="background: #C8E8E8;">
           <div class="case-card-watermark" style="color:rgba(0,80,80,0.12);">MWEB</div>
-          <p class="case-card-header-label">Telecoms · Internet Services · Brand</p>
+          <p class="case-card-header-label">Telecoms &middot; Internet Services &middot; Brand</p>
         </div>
         <div class="case-card-body">
-          <h3 class="case-title">MWeb &amp; Webafrica: Building a brand voice in a commoditised market</h3>
-          <p class="case-body">Brand and communication strategy for two of South Africa's leading internet service providers, across a period of significant market change.</p>
+          <h3 class="case-title">MWeb &amp; Webafrica: Brand leadership through a live merger</h3>
+          <p class="case-body">Promoted mid-merger. Led a team of twelve. Managed two competing brand voices across two full platform migrations without losing either identity.</p>
           <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">3</p><p style="font-size:0.65rem; color:var(--muted);">Years</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">12</p><p style="font-size:0.65rem; color:var(--muted);">Team members</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">2</p><p style="font-size:0.65rem; color:var(--muted);">System migrations</p></div>
           </div>
-          <span class="case-arrow">Read case study →</span>
+          <span class="case-arrow">Read case study &rarr;</span>
         </div>
       </a>
       <a href="case-virgin.html" class="case-card">
         <div class="case-card-header" style="background: #F5D6D6;">
           <div class="case-card-watermark">VIRGIN</div>
-          <p class="case-card-header-label">Health &amp; Fitness · Content Strategy</p>
+          <p class="case-card-header-label">Health &amp; Fitness &middot; Content Strategy</p>
         </div>
         <div class="case-card-body">
-          <h3 class="case-title">Virgin Active: Building a brand voice for the body-positive era</h3>
-          <p class="case-body">Shifting the gym brand's tone from aspiration-through-guilt to genuine human encouragement. Across every channel.</p>
+          <h3 class="case-title">Virgin Active: Shifting a fitness brand from aspiration to human truth</h3>
+          <p class="case-body">Rebuilding the brand's tone at a moment of cultural shift. From guilt-driven aspiration to genuine human encouragement, across every channel simultaneously.</p>
           <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">B2C</p><p style="font-size:0.65rem; color:var(--muted);">Brand voice</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">Multi</p><p style="font-size:0.65rem; color:var(--muted);">Channel</p></div>
           </div>
-          <span class="case-arrow">Read case study →</span>
+          <span class="case-arrow">Read case study &rarr;</span>
         </div>
       </a>
       <a href="case-wof.html" class="case-card">
         <div class="case-card-header" style="background: #FFF3C4;">
           <div class="case-card-watermark" style="color:rgba(0,0,0,0.1);">WOF</div>
-          <p class="case-card-header-label" style="color:rgba(0,0,0,0.4);">Government · EPWP · Public-Private Partnership</p>
+          <p class="case-card-header-label" style="color:rgba(0,0,0,0.4);">Government &middot; EPWP &middot; Public-Private Partnership</p>
         </div>
         <div class="case-card-body">
-          <h3 class="case-title">Working on Fire: Turning urgency into a movement</h3>
-          <p class="case-body">Communication strategy that transformed a firefighting organisation into a recognisable South African brand with genuine public support.</p>
+          <h3 class="case-title">Working on Fire: Communication at national emergency scale</h3>
+          <p class="case-body">Real-time crisis reporting, COVID coordination across 500+ deployed firefighters, and public communication across eight provinces. Where the standard for accuracy is non-negotiable.</p>
           <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">8</p><p style="font-size:0.65rem; color:var(--muted);">Provinces</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">500+</p><p style="font-size:0.65rem; color:var(--muted);">Reached</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">ICC</p><p style="font-size:0.65rem; color:var(--muted);">COVID</p></div>
           </div>
-          <span class="case-arrow">Read case study →</span>
+          <span class="case-arrow">Read case study &rarr;</span>
         </div>
       </a>
       <a href="case-uct-gsb.html" class="case-card">
         <div class="case-card-header" style="background: linear-gradient(135deg, #C8D8E8 0%, #D8EEF8 100%);">
           <div class="case-card-watermark" style="color:rgba(0,0,50,0.1);">GSB</div>
-          <p class="case-card-header-label">Higher Education · Social Media</p>
+          <p class="case-card-header-label">Higher Education &middot; Social Media</p>
         </div>
         <div class="case-card-body">
-          <h3 class="case-title">UCT GSB: Brand archaeology and social media campaign</h3>
-          <p class="case-body">No brand guide. No template library. No handover. A complete brand system and two campaigns built from scratch in a single session.</p>
+          <h3 class="case-title">UCT GSB: Brand system and campaign built from nothing, in one session</h3>
+          <p class="case-body">No brand guide, no template library, no handover. Reverse-engineered a complete visual identity and produced two launch campaigns from first principles.</p>
           <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">14</p><p style="font-size:0.65rem; color:var(--muted);">Templates</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">2</p><p style="font-size:0.65rem; color:var(--muted);">Campaigns</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">1</p><p style="font-size:0.65rem; color:var(--muted);">Session</p></div>
           </div>
-          <span class="case-arrow">Read case study →</span>
+          <span class="case-arrow">Read case study &rarr;</span>
         </div>
       </a>
-      <a href="iso-specialist-case-study.html" class="case-card">
+      <a href="iso-specialist-case-study.html" class="case-card case-card--full">
         <div class="case-card-header" style="background: linear-gradient(135deg, #C8D4E0 0%, #D8E4F0 100%);">
           <div class="case-card-watermark" style="color:rgba(0,30,70,0.1);">ISO</div>
-          <p class="case-card-header-label">Certification · B2B · Market Entry</p>
+          <p class="case-card-header-label">Certification &middot; B2B &middot; Market Entry</p>
         </div>
         <div class="case-card-body">
-          <h3 class="case-title">ISO Specialist: Taking a Dutch certification brand into South Africa</h3>
-          <p class="case-body">A full SA market entry strategy, brand voice adaptation, 30/60/90 day campaign plan, social media content, and a B2B prospecting framework.</p>
+          <h3 class="case-title">ISO Specialist: Full SA market entry strategy for a Dutch certification brand</h3>
+          <p class="case-body">Market sizing, audience segmentation, brand voice localisation, 90-day campaign plan, LinkedIn content, and a B2B prospecting framework. Delivered without a brief.</p>
           <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">90</p><p style="font-size:0.65rem; color:var(--muted);">Day plan</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">B2B</p><p style="font-size:0.65rem; color:var(--muted);">Strategy</p></div>
             <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">SA</p><p style="font-size:0.65rem; color:var(--muted);">Market entry</p></div>
           </div>
-          <span class="case-arrow">Read case study →</span>
+          <span class="case-arrow">Read case study &rarr;</span>
         </div>
       </a>
-      <a href="case-trust-gap.html" class="case-card">
-        <div class="case-card-header" style="background: #1A1A1A; border-top: 2px solid #C8A96E;">
-          <div class="case-card-watermark" style="color:rgba(200,169,110,0.15); font-size:4rem;">TTG</div>
-          <p class="case-card-header-label" style="color:rgba(200,169,110,0.6);">Brand Strategy · Copy · Positioning</p>
-        </div>
-        <div class="case-card-body">
-          <h3 class="case-title">The Trust Gap: Homepage concept and messaging architecture</h3>
-          <p class="case-body">Brand strategy and full copy for an independent digital consultancy. From positioning insight to every word on the page.</p>
-          <div style="display:flex; gap:1.5rem; margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid var(--border);">
-            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">0</p><p style="font-size:0.65rem; color:var(--muted);">Brief given</p></div>
-            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">1</p><p style="font-size:0.65rem; color:var(--muted);">Full concept</p></div>
-            <div><p style="font-family:var(--serif); font-size:1.25rem; color:var(--navy);">WIP</p><p style="font-size:0.65rem; color:var(--muted);">In progress</p></div>
-          </div>
-          <span class="case-arrow">Read case study →</span>
-        </div>
-      </a>
+
     </div>
   </div>
 </div>
@@ -378,57 +364,68 @@
 <div class="section-divider"></div>
 
 
-<!-- SKILLS -->
+<!-- CREDENTIALS -->
 <div class="bg-page" id="skills">
   <div class="section">
-    <p class="section-label">What I Bring</p>
-    <div class="dsm-intro">
-      <p class="dsm-name">The Digital School of Marketing, South Africa</p>
-      <p class="dsm-sub">19 accredited module certifications, completed and passed through examination. Individual certificates held for each module.</p>
+    <p class="section-label">Credentials &amp; Capabilities</p>
+
+    <!-- Anchor credential: the BA -->
+    <div class="cred-anchor">
+      <p class="cred-anchor-degree">BA Corporate Communication (Distinction)</p>
+      <p class="cred-anchor-inst">The Open University London (via Varsity College, SA)</p>
+      <span class="cred-anchor-badge">Core Academic Authority</span>
     </div>
+
     <div class="cred-grid">
       <div class="cred-card">
-        <p class="cred-label">Brand &amp; Communication</p>
-        <div class="tags">
-          <span class="tag-cert">Brand Contact</span>
-          <span class="tag-cert">Brand Positioning</span>
-          <span class="tag-cert">Marketing Communication Concepts</span>
-          <span class="tag-cert">Writing Advertising Copy</span>
-          <span class="tag-cert">Defining your Audience</span>
+        <p class="cred-label">AI Strategy &amp; Orchestration</p>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Prompt Architecture</p>
+          <p class="cred-cap-body">Designing structured, repeatable prompt frameworks that produce consistent, brand-aligned outputs at scale.</p>
+        </div>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Content Scaling</p>
+          <p class="cred-cap-body">AI-directed production of high-volume messaging and strategic documents without sacrificing brand voice or intent.</p>
+        </div>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Visual Conceptualisation</p>
+          <p class="cred-cap-body">Directing AI engines to produce design-ready visual concepts and branded assets directly from a strategic brief.</p>
         </div>
       </div>
       <div class="cred-card">
-        <p class="cred-label">Content &amp; Digital</p>
-        <div class="tags">
-          <span class="tag-cert">Introduction to Digital Marketing</span>
-          <span class="tag-cert">Digital Marketing Strategy</span>
-          <span class="tag-cert">Content Marketing Strategy</span>
-          <span class="tag-cert">Digital Copywriting</span>
-          <span class="tag-cert">Introduction to WordPress</span>
+        <p class="cred-label">Marketing &amp; Communication Strategy</p>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Brand Positioning &amp; Messaging Architecture</p>
+          <p class="cred-cap-body">Building the strategic foundation that governs what a brand says, how it says it, and to whom. Across every channel.</p>
+        </div>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Cross-Platform Performance</p>
+          <p class="cred-cap-body">Connecting content strategy directly to pipeline, acquisition, and measurable business outcomes. Moving far beyond vanity metrics.</p>
+        </div>
+        <div class="cred-capability">
+          <p class="cred-cap-title">B2B Market Entry &amp; Localisation Strategy</p>
+          <p class="cred-cap-body">Adapting international brands for the South African market. Understanding both sides of a structurally bifurcated economy is not a skill you pick up overnight.</p>
         </div>
       </div>
     </div>
+
     <div class="cred-grid">
       <div class="cred-card">
-        <p class="cred-label">Social &amp; PR</p>
-        <div class="tags">
-          <span class="tag-cert">Social Media Marketing</span>
-          <span class="tag-cert">Managing a Social Media Community</span>
-          <span class="tag-cert">Online Public Relations</span>
+        <p class="cred-label">Advanced Digital Marketing</p>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Advanced Digital Marketing</p>
+          <p class="cred-cap-body">Advanced Diploma via the Digital School of Marketing, SA. Comprehensive mastery spanning brand strategy, analytics, paid media, and content performance ecosystem design.</p>
         </div>
       </div>
       <div class="cred-card">
-        <p class="cred-label">Analytics &amp; Performance</p>
-        <div class="tags">
-          <span class="tag-cert">SEO and Analytics</span>
-          <span class="tag-cert">Cookies and Tracking in Analytics</span>
-          <span class="tag-cert">Email Marketing</span>
-          <span class="tag-cert">Mobile Marketing</span>
-          <span class="tag-cert">Paid Advertising</span>
-          <span class="tag-cert">Supervise a Technical Project Team</span>
+        <p class="cred-label">Communication Foundations</p>
+        <div class="cred-capability">
+          <p class="cred-cap-title">Crisis &amp; Public Sector Communication</p>
+          <p class="cred-cap-body">Built under pressure at Working on Fire: national government programmes, eight provinces, real-time fire emergencies, and COVID coordination at ICC level.</p>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
